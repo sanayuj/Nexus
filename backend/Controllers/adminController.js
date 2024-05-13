@@ -1,4 +1,42 @@
 const userModel=require("../Models/userModel");
+const jwt = require("jsonwebtoken");
+const adminModel=require("../Models/adminModel")
+const bcrypt=require("bcrypt")
+const maxAge=3 * 24 * 60 * 60;
+
+const createAdminToken = (id) => {
+  return jwt.sign({ id }, "adminJWT", {
+    expiresIn: maxAge,
+  });
+};
+
+
+module.exports.adminLogin = async (req, res, next) => {
+  const { email, password } = req.body;
+  try {
+    const admin = await adminModel.findOne({ email });
+    if (admin) {
+      const adminAuth = await bcrypt.compare(password, admin.password);
+      if (adminAuth) {
+        const adminToken = createAdminToken(admin._id);
+        return res.json({
+          message: "login successfully",
+          status: true,
+          token: adminToken,
+          adminDetails: admin,
+        });
+      }
+      return res.json({ message: "Invaild password", status: false });
+    }
+    return res.json({ message: "Admin not found", status: false });
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: "Internal server error", status: false });
+  }
+};
+
+
+
 
 module.exports.userList=async(req,res,next)=>{
     try{
