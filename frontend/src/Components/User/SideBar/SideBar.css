@@ -1,0 +1,58 @@
+#hm,#ap,#gm,#lb,#hp{
+    height: 60px;
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 40px;
+    left: -70px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    color: #222831;
+}
+#ap{
+    top: 60px;
+}
+#gm{
+    top: 80px;
+}
+#lb{
+    top: 260px;
+}
+#hp{
+    top: 290px;
+}
+#home,#app,#game,#library,#more{
+    font-size: 20px;
+    font-style: normal;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#sidebar{
+    border-right: 2px  solid black;
+    width: 20px;
+    height: 650px;
+    position: relative;
+    top: 50px;
+}
+.btn.dropdown-toggle::after {
+    display: none;
+}
+.dropdown-menu{
+    background-color: #222831;
+    color: #EEEEEE;
+    border-radius: 4px;
+    justify-content: center;
+    height: 120px;
+}
+.dropdown-menu li{
+    margin-top: 10px;
+    color: #EEEEEE;
+}
+.dropdown-menu li:hover{
+    background-color: #eeeeee;
+    color: #222831; 
+}
+#link{
+    text-decoration: none;
+}

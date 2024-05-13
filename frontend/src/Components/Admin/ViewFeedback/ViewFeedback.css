@@ -1,0 +1,44 @@
+#box3{
+    background-color: #31363f6e;
+    height: 60px;
+    width: 1100px;
+    position: relative;
+    left: 100px;
+    top: 30px;
+    border-radius: 5px;
+}
+#vft1,#vft2,#vfb1{
+    position: relative;
+    top: 5px;
+    left: 35px;
+    height: 50px;
+    border-radius: 5px;
+}
+#vft1{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 300px;
+    font-size: 18px;
+}
+#vft2{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 350px;
+    position: relative;
+    left: 160px;
+    font-size: 18px;
+}
+#vfb1{
+    position: relative;
+    left: 250px;
+    height: 40px;
+    width: 130px;
+    font-size: 20px;
+    color: #EEEEEE;
+    background-color: rgb(13, 171, 13);
+}
+#vfb1:hover{
+    box-shadow: 2px 3px 4px black;
+}

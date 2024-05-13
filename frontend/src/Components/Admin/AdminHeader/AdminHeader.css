@@ -1,0 +1,80 @@
+#t2{
+    color: white;
+    position: relative;
+    left: 20px;
+    font-size: 32px;
+    top: 0px;
+}
+#notify{
+    font-size: 28px;
+}
+#notification{
+    position: relative;
+    top: 0px;
+    left: 250px;
+    font-size: 28px;
+    background-color: transparent;
+    border: none;
+    color: #EEEEEE;
+}
+#notification_list{
+    width: 500px;
+}
+#search{
+    margin-left: 100px;
+    width: 500px;
+    height: 40px;
+    border-radius: 20px;
+    position: relative;
+    top: -0px;
+    font-size: 16px;
+    background-color: #fcfafa9a;
+    color: black;
+}
+#searchicon{
+    position: relative;
+    left: -45px;
+    top: -2px;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    color: black;
+}
+#osfilter{
+    background-color: transparent;
+    color: #EEEEEE;
+    width: 120px;
+    border: none;
+    position: relative;
+    left: 150px;
+    height: 30px;
+    font-size: 18px;
+}
+#hrfilter{
+    position: relative;
+    top: 15px;
+    left: 30px;
+    width: 120px;
+}
+#osfilter option{
+    background-color: #31363F;
+    color: #EEEEEE;
+}
+#profileicon{
+    position: relative;
+    left: -90px;
+    top: 0px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: white;
+}
+#profile_details{
+    position: absolute;
+    left: -240px;
+}
+#underline{
+    position: relative;
+    left: -0px;
+    top: 0px;
+}

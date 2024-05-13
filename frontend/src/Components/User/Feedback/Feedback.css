@@ -1,0 +1,147 @@
+#div2{
+    margin-top: -600px;
+}
+.selected {
+    /* background-color: #007bff; Change background color as needed */
+    color: yellow; /* Change text color as needed */
+
+  }
+
+  .notSelected{
+    color:white
+
+  }
+
+.selectedCategory{
+    background-color: rgb(231, 204, 172);
+}
+.notSelectedCategory{
+    background-color: white;
+}
+#f2{
+    background-color: #31363f88;
+    width: 1200px;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: relative;
+    left: 80px;
+    text-align: center;
+    color: #EEEEEE;
+}
+#fh{
+    font-weight: bold;
+    position: relative;
+    left: 40px;
+    text-align: left;
+}
+#fp1{
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    top: 15px;
+}
+#fp2{
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    top: -10px;
+}
+#fb1,#fb2,#fb3,#fb4,#fb5{
+    font-size: 60px;
+    background-color: transparent;
+    /* color: white; */
+    border: none;
+    position: relative;
+    top: -40px;
+}
+#fb2{
+    left: 15px;
+}
+#fb3{
+    left: 30px;
+}
+#fb4{
+    left: 45px;
+}
+#fb5{
+    left: 65px;
+}
+/* #fb1:hover,#fb2:hover,#fb3:hover,#fb4:hover,#fb5:hover{
+    color: yellow;
+} */
+
+
+#fp3{
+    position: relative;
+    top: -40px;
+    text-align: center;
+    font-size: 19px;
+}
+#d2{
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.385);
+    height: 100px;
+    position: relative;
+    top: -60px;
+    left: 250px;
+    width: 680px;
+    border-radius: 10px;
+}
+#fb6,#fb7,#fb8{
+    width: 200px;
+    height: 60px;
+    border-radius: 10px;
+    position: relative;
+    top: 20px;
+    left: 20px;
+    /* background-color: #31363F;
+    color: #EEEEEE; */
+    font-size: 18px;
+}
+#fb7{
+    left: 40px;
+}
+#fb8{
+    left: 60px;
+}
+/* #fb6:hover,#fb7:hover,#fb8:hover{
+    background-color: #EEEEEE;
+    color: #31363F;
+    box-shadow: 2px 3px 4px;
+} */
+#fp4{
+    position: relative;
+    top: -60px;
+    text-align: center;
+    font-size: 19px;
+}
+#ft1{
+    position: relative;
+    left: 0px;
+    top: -80px;
+    width: 680px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.385);
+    padding: 10px;
+}
+#fb9{
+    position: relative;
+    top: -50px;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #31363F;
+    color: #EEEEEE;
+    left: -40px;
+}
+#fb9:hover{
+    background-color: #EEEEEE;
+    color: #31363F;
+    box-shadow: 2px 3px 4px;
+}
+#menu1{
+    border-left: 2px solid black;
+    margin-top: 20px;
+    margin-left: -630px;
+}

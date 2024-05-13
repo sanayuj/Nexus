@@ -1,0 +1,15 @@
+#timg{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+#twindows{
+    position: relative;
+    left: 150px;
+    width: 1200px;
+}
+#th2{
+    position: relative;
+    left: 80px;
+    top: -50px;
+}

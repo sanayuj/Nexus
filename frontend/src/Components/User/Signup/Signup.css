@@ -1,0 +1,54 @@
+#form{
+    margin-left: 500px;
+    margin-top: 60px;
+    background-color: #222831b2;
+    width: 500px;
+    height: 700px;
+    box-shadow: 2px 3px 4px;
+}
+#h1{
+    color: white;
+    position: relative;
+    left: 150px;
+    top:45px;
+}
+#name,#phn,#mail,#pswd1,#cpswd{
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    color: white;
+    position: relative;
+    left: 100px;
+    background-color: transparent;
+    border: none;
+    top: 60px;
+}
+hr{
+    width: 300px;
+    margin-left: 0px;
+    position: relative;
+    top: 45px;
+    left:100px;
+    border: 1px solid white;
+}
+#btn{
+    background-color: #31363F;
+    color: #EEEEEE;
+    border: 2px;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    top: 40px;
+    left: 170px;
+    font-weight: bold;
+    text-align: center;
+}
+#btn:hover{
+    background-color: #EEEEEE;
+    color: #31363F;  
+    box-shadow: 2px 3px 4px;
+}
+body{
+    background-color: #76ABAE;
+}

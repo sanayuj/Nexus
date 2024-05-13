@@ -1,0 +1,14 @@
+#myplot{
+    width:100%;
+    max-width:700px;
+}
+.card-title{
+    font-size: 35px;
+}
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.card{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

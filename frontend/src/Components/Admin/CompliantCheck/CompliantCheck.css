@@ -1,0 +1,104 @@
+#ccb1{
+    position: relative;
+    left: 900px;
+    top: -38px;
+    font-size: 18px;
+    color: #EEEEEE;
+    border: none;
+    background-color: transparent;
+    width: 180px;
+    height: 40px;
+}
+#cci1{
+    font-size: 22px;
+    font-weight: bold;
+    position: relative;
+    left: 12px;
+    top: 1px;
+}
+#ccb1:active{
+    color: red;
+}
+#collapseOne{
+    background-color: #31363f20;
+    color: black;
+    border-radius: 5px;
+    justify-content: center;
+}
+#ccbox{
+    background-color: #31363f6e;
+    height: 60px;
+    width: 1100px;
+    position: relative;
+    left: 100px;
+    top: 30px;
+    border-radius: 5px;
+}
+#cct1,#cct2,#cct3{
+    position: relative;
+    top: 5px;
+    left: 35px;
+    height: 50px;
+    border-radius: 5px;
+}
+#cct1{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 300px;
+    font-size: 18px;
+}
+#cct2{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 350px;
+    position: relative;
+    left: 60px;
+    font-size: 18px;
+}
+#cct3{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 350px;
+    font-size: 18px;
+}
+.dropdown-menu{
+    background-color: #31363f76;
+    color: #EEEEEE;
+    border-radius: 5px;
+    justify-content: center;
+}
+.dropdown-menu li:hover{
+    background-color: #eeeeee63;
+    color: #31363F; 
+}
+#i1{
+    margin-right: 10px;
+    margin-left: 30px;
+}
+#cprofile{
+    position: relative;
+    left: -500px;
+}
+#cnotification{
+    position: relative;
+    top: -80px;
+    left: 1200px;
+    font-size: 28px;
+    background-color: transparent;
+    border: none;
+    color: #EEEEEE;
+}
+.dropdown-toggle::after {
+    display: none;
+  }
+#cdrop{
+    background-color: white;
+    color: black;
+    width: 500px;
+}
+.div2{
+    z-index: 5;
+}

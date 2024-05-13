@@ -1,0 +1,95 @@
+#uh{
+    font-weight: bold;
+    position: relative;
+    left: 50px;
+}
+#form3{
+    position: relative;
+    left: 100px;
+    top: 40px;
+    background-color: #31363f8f;
+    width: 1200px;
+    border-radius: 5px;
+    color: #EEEEEE;
+}
+#hr1_1{
+    position: relative;
+    top: -15px;
+    width: 350px;
+    left: 0px;
+    border: 1px solid black;
+}
+#hr1_2{
+    position: relative;
+    top: -40px;
+    width: 350px;
+    left: 0px;
+    border: 1px solid black;
+}
+#hr1{
+    position: relative;
+    top: -55px;
+    width: 350px;
+    left: 0px;  
+    border: 1px solid black;
+}
+#hr2{
+    position: relative;
+    top: -40px;
+    width: 350px;
+    left: 0px;  
+    border: 1px solid black;
+}
+#text{
+    position: relative;
+    top: -30px;
+}
+#text1{
+    position: relative;
+    top: -40px;;
+}
+#appname,#devname,#publname,#file,#img1,#appicon,#category{
+    width: 350px;
+    height: 35px;
+    background-color: transparent;
+    border: none;
+}
+#appfile,#scrnsht{
+    position: relative;
+    top: -30px;
+}
+#devname,#publname,#file,#img1,#appicon,#category{
+    position: relative;
+    top: -40px;
+}
+#desc{
+    width: 350px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    top: -20px;
+}
+#subbtn{
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #31363F;
+    color: #EEEEEE;
+    font-size: 18px;
+    position: relative;
+    left: 100px;
+    top: -40px;
+}
+#subbtn:hover{
+    background-color: #EEEEEE;
+    box-shadow: 2px 3px 4px;
+    color: #31363F;
+}
+#l1{
+    position: relative;
+    top: -40px;
+}
+#appicon,#appfile,#scrnsht{
+    left: 20px;
+}

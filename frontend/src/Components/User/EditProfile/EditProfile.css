@@ -1,0 +1,97 @@
+#epdiv{
+    margin-top: -700px;
+}
+.img-raised {
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+    position: relative;
+    top: -100px;
+    left: 300px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 4px 4px 4px black;
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+}
+#eph{
+    margin-left: 500px;
+    margin-top: 50px;
+}
+#epf2{
+    margin-top: 30px;
+    margin-left: 300px;
+    background-color: #EEEEEE;
+    padding: 30px;
+    box-shadow: 2px 4px 6px;
+    border-radius: 5px;
+    width: auto;
+}
+#eimg{
+    position: relative;
+    left: 0px;
+    top: -20px;
+}
+#epname,#epmail,#epcno,#epbio{
+    width: 300px;
+    height: 30px;
+    position: relative;
+    top: 18px;
+    font-size: 17px;
+    background-color: transparent;
+    border: none;
+}
+#ep,#ep1{
+    border-color: black;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+#ep1,#epbio{
+    width: 600px;
+}
+
+#uploadButton{
+    display: inline-block;
+    position: relative;
+}
+#upbtn-label {
+    display: inline-block;
+    padding: 8px 20px;
+    background:linear-gradient(90deg, rgba(0,1,255,1) 0%, rgba(9,17,121,1) 50%, rgba(2,0,36,1) 100%); /* Example background color */
+    color: #fff; /* Text color */
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    left: 30px;
+    top: -20px;
+  }
+  
+#upbtn-label:hover {
+    box-shadow: 2px 3px 4px black;
+  }
+  
+  #epbtn {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+#button{
+    position: relative;
+    left: 350px;
+    width: 120px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 18px;
+    background: linear-gradient(90deg, rgba(0,1,255,1) 0%, rgba(9,17,121,1) 50%, rgba(2,0,36,1) 100%);
+    color: #EEEEEE;
+    border-radius: 5px;
+}
+#button:hover{
+    box-shadow: 2px 3px 4px black;
+}

@@ -1,0 +1,126 @@
+html *{
+    -webkit-font-smoothing: antialiased;
+}
+
+#pdiv{
+    margin-top: -650px;
+}
+
+.main-raised {
+    margin: -60px 30px 0;
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+}
+
+.main {
+    background: #FFF;
+    position: relative;
+    z-index: 3;
+    margin-top: 150px;
+    margin-left: 300px;
+    width: 900px;
+    height: 500px;
+}
+
+.profile-page .profile {
+    text-align: center;
+}
+
+.profile-page .profile img {
+    max-width: 160px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-transform: translate3d(0,-50%,0);
+    -moz-transform: translate3d(0,-50%,0);
+    -o-transform: translate3d(0,-50%,0);
+    -ms-transform: translate3d(0,-50%,0);
+    transform: translate3d(0,-50%,0);
+}
+
+.img-raised {
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+    position: relative;
+    top: -100px;
+    left: 300px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 4px 4px 4px black;
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
+}
+
+.pbtn{
+    position: relative;
+    top: -280px;
+    left: 520px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(9,9,121,1) 50%, rgba(2,0,36,1) 100%);
+    color: #EEEEEE;
+    font-style: italic;
+    font-weight: bold;
+}
+#pname{
+    border: none;
+    background-color: transparent;
+    width: 300px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Arial black;
+    position: relative;
+    top: -100px;
+    left: 360px;
+}
+#pmail{
+    width: auto;
+    font-size: 18px;
+    font-family: cursive; 
+    border: none;
+    background-color: transparent;
+    position: relative;
+    top: -70px;
+}
+#pcno{
+    border: none;
+    background-color: transparent;
+    width: auto;
+    max-width: 100%;
+    font-family: cursive;
+    font-size: 18px;
+    position: relative;
+    top: -80px;
+}
+
+.bi{
+    margin-right: 10px;
+}
+
+.profile-page .description {
+    margin: 1.071rem auto 0;
+    max-width: 600px;
+    color: #999;
+    font-weight: 300;
+}
+.description label{
+    position: relative;
+    left: -420px;
+    top: -90px;
+    font-family: cursive;
+    font-size: 18px;
+}
+.description input{
+    background-color: transparent;
+    position: relative;
+    left: -25px;
+    top: -130px;
+    font-size: 16px;
+    width: 800px;
+    border-radius: 15px;
+    height: 50px;
+    padding: 15px;
+    box-shadow: 0px 0px 4px;
+}
+#link{
+    text-decoration: none;
+}

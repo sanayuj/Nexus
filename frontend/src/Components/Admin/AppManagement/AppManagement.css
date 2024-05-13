@@ -1,0 +1,80 @@
+#div2{
+    margin-left: 80px;
+}
+#ambox{
+    background-color: #31363f6e;
+    height: 60px;
+    width: 1300px;
+    position: relative;
+    left: 0px;
+    top: 30px;
+    border-radius: 5px;
+}
+#amt1,#amt2,#amt3,#amb1,#amb2,#amb3{
+    position: relative;
+    top: 5px;
+    left: 30px;
+    height: 50px;
+    border-radius: 5px;
+}
+#amt1{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 300px;
+    font-size: 18px;
+}
+#amt2{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 300px;
+    position: relative;
+    left: -20px;
+    font-size: 18px;
+}
+#amt3{
+    background-color: transparent;
+    color: #EEEEEE;
+    border: none;
+    width: 300px;
+    position: relative;
+    left: -30px;
+    font-size: 18px; 
+}
+#amb1{
+    position: relative;
+    left: -30px;
+    height: 40px;
+    width: 110px;
+    font-size: 20px;
+    color: #EEEEEE;
+    background-color: orange;
+}
+#amb2{
+    position: relative;
+    left: -0px;
+    height: 40px;
+    width: 130px;
+    font-size: 20px;
+    color: #EEEEEE;
+    background-color: rgb(13, 171, 13);
+}
+#amb3{
+    position: relative;
+    left: 30px;
+    height: 40px;
+    width: 110px;
+    font-size: 20px;
+    color: #EEEEEE;
+    background-color: rgb(199, 20, 20);
+}
+#amb1:hover,#amb2:hover,#amb3:hover{
+    box-shadow: 2px 3px 4px black;
+}
+#ami1{
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    
+}
