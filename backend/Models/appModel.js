@@ -31,6 +31,10 @@ const appSchema = new mongoose.Schema({
         type:String,
         required:true
       },
+      OS:{
+        type:String,
+        required:true
+      },
       appScreenshot:{
         type:String,
         required:true

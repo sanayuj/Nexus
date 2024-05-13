@@ -1,0 +1,62 @@
+#adform1{
+    margin-left: 500px;
+    margin-top: 150px;
+    background-color: #222831b2;
+    width: 500px;
+    height: 450px;
+    box-shadow: 2px 3px 4px;
+}
+#adt1{
+    color: white;
+    position: relative;
+    left: 150px;
+    top:50px;
+}
+#adsubmit{
+    background-color: #31363F;
+    color: #EEEEEE;
+    border: 2px;
+    border-radius: 15px;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    top: 20px;
+    left: 175px;
+    font-weight: bold; 
+    font-size: 16px; 
+}
+#adsubmit:hover{
+    color: #31363F;
+    background-color: #EEEEEE;
+    box-shadow: 2px 3px 4px;
+}
+#adusername,#adpswd{
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    color: white;
+    position: relative;
+    left: 100px;
+    background-color: transparent;
+    border: none;
+    top: 40px;
+}
+#adline{
+    width: 300px;
+    margin-left: 0px;
+    position: relative;
+    top: 23px;
+    left:100px;
+    border:1px solid white
+}
+#adcrt{
+    color: white;
+    position: relative;
+    top: 35px;
+    left: 183px;
+    background-color: transparent;
+    border: none;
+}
+#adcrt:hover{
+    color: blue;
+}

@@ -16,6 +16,7 @@ import AdminLinuxAppinfo from '../Pages/Admin/AdminLinuxAppinfo'
 import AdminMacAppinfo from '../Pages/Admin/AdminMacAppinfo'
 import AdminWindowsAppinfo from '../Pages/Admin/AdminWindowsAppinfo'
 import AdminLibrarypage from '../Pages/Admin/AdminLibrarypage'
+import AdminLogin from '../Components/Admin/AdminLogin/AdminLogin'
 
 export default function AdminRoutes() {
   return (
@@ -29,7 +30,8 @@ export default function AdminRoutes() {
         <Route path='/library' element={<AdminLibrarypage/>}/> 
         <Route path='/apps' element={<AdminAppPage/>}/> 
         <Route path='/games' element={<AdminGamesPage/>}/> 
-        <Route path='/' element={<AdminHomePage/>}/> 
+        <Route path='/home' element={<AdminHomePage/>}/> 
+        <Route path='/' element={<AdminLogin/>}/> 
         <Route path='/user_details' element={<AdminUserinfo/>}/>
         <Route path='/app_details' element={<AdminAppinfo/>}/>
         <Route path='/game_details' element={<AdminGameAppinfo/>}/>

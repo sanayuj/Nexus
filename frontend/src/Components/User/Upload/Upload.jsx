@@ -18,6 +18,7 @@ export default function Upload() {
     developerName: "",
     publisherName: "",
     Category: "",
+    OS:"",
     appScreenshots: null,
     appIcon: null,
   };
@@ -49,11 +50,14 @@ export default function Upload() {
       .min(3, "*Name must be at least 3 characters long")
       // .matches(/^[A-Za-z]+$/, "* Name must only contain characters")
       .required("* This field is required"),
+      OS:Yup.string()
+      .required("This field is required"),
     appScreenshots: Yup.mixed().required("* This field is required"),
     appIcon: Yup.mixed().required("* This field is required"),
   });
 
   const onSubmit = async (values, { resetForm }) => {
+    console.log(values,"$$$$$$$121212");
     const { data } = await appUpload(values, userIdentity);
     if (data?.status) {
       resetForm();
@@ -199,27 +203,40 @@ export default function Upload() {
                   </p>
                 ) : null}
                 <br />
-                <input
-                  type="text"
-                  name="Category"
-                  onBlur={formik.handleBlur}
-                  onChange={formik.handleChange}
-                  value={formik.values.Category}
-                  id="category"
-                  placeholder="Category"
-                />
-
+                <select name="Category" id="category"
+                          onBlur={formik.handleBlur}
+                          onChange={formik.handleChange}
+                          value={formik.values.Category}>
+                          <option value="">Choose category</option>
+                            <option value="Productivity">Productivity</option>
+                            <option value="Social Networking">Social Networking</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Communication">Communication</option>
+                            <option value="Education">Education</option>
+                            <option value="Health and Fitness">Health and Fitness</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Utilities">Utilities</option></select><br /><hr id='hr1'/><br />
+                            {formik.touched.Category && formik.errors.Category ?(
+                              <p className='text-danger errorMsg' style={{fontSize:"12px",margin:"0px",position:"relative",top:"-90px"}}>
+                                {formik.errors.Category}
+                              </p>
+                            ):null}
                 <br />
-                <hr id="hr1" />
-                {formik.touched.Category && formik.errors.Category ? (
-                  <p
-                    className="text-danger errorMsg"
-                    style={{ fontSize: "12px", margin: "0px" }}
-                  >
-                    {formik.errors.Category}
-                  </p>
-                ) : null}
-                <br />
+                <select name="OS" id="os"
+                          onBlur={formik.handleBlur}
+                          onChange={formik.handleChange}
+                          value={formik.values.OS}>
+                          <option value="">Choose OS</option>
+                            <option value="Windows">Windows</option>
+                            <option value="Linux">Linux</option>
+                            <option value="MAC">MAC</option></select><br /><hr id='hr1'/><br />
+                            {formik.touched.OS && formik.errors.OS ?(
+                              <p className='text-danger errorMsg' style={{fontSize:"12px",margin:"0px",position:"relative",top:"-90px"}}>
+                                {formik.errors.OS}
+                              </p>
+                            ):null}
                 <label id="text">Upload sample screen shots</label>
                 <input
                   type="file"

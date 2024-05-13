@@ -1,3 +1,6 @@
+#div2{
+    margin-top: -600px;
+}
 #uh{
     font-weight: bold;
     position: relative;
@@ -6,11 +9,12 @@
 #form3{
     position: relative;
     left: 100px;
-    top: 40px;
+    top: 20px;
     background-color: #31363f8f;
     width: 1200px;
     border-radius: 5px;
     color: #EEEEEE;
+    margin-bottom: 10px;
 }
 #hr1_1{
     position: relative;
@@ -40,25 +44,14 @@
     left: 0px;  
     border: 1px solid black;
 }
-#text{
-    position: relative;
-    top: -30px;
-}
-#text1{
-    position: relative;
-    top: -40px;;
-}
-#appname,#devname,#publname,#file,#img1,#appicon,#category{
+#appname,#devname,#publname,#category,#os{
     width: 350px;
     height: 35px;
     background-color: transparent;
     border: none;
+    color: #EEEEEE;
 }
-#appfile,#scrnsht{
-    position: relative;
-    top: -30px;
-}
-#devname,#publname,#file,#img1,#appicon,#category{
+#devname,#publname,#category,#os{
     position: relative;
     top: -40px;
 }
@@ -69,6 +62,7 @@
     border: none;
     position: relative;
     top: -20px;
+    color: #EEEEEE;
 }
 #subbtn{
     width: 150px;
@@ -78,8 +72,8 @@
     color: #EEEEEE;
     font-size: 18px;
     position: relative;
-    left: 100px;
-    top: -40px;
+    left: 510px;
+    top: -10px;
 }
 #subbtn:hover{
     background-color: #EEEEEE;
@@ -90,6 +84,46 @@
     position: relative;
     top: -40px;
 }
-#appicon,#appfile,#scrnsht{
-    left: 20px;
+#upbtn1,#upbtn2,#upbtn3{
+    margin-left: 40px;
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, rgba(0,1,255,1) 0%, rgba(9,17,121,1) 50%, rgba(2,0,36,1) 100%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+#basic{
+    border-right: 2px solid black;
+}
+#basic,#basic1{
+    padding-left: 40px;
+    padding-top: 20px;
+}
+#category option,#os option{
+    background-color: #31363F;
+    color: #EEEEEE;
+
+}
+
+.uploadButtons{
+    display: inline-block;
+    position: relative;
+}
+#upbtn-label1 {
+    display: inline-block;
+    padding: 8px 20px;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    left: 20px;
+    font-style: italic;
+  }
+  
+#upbtn1:hover,#upbtn2:hover,#upbtn3:hover {
+    box-shadow: 2px 3px 4px black;
+  }

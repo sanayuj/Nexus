@@ -87,6 +87,7 @@ module.exports.login=async(req,res)=>{
         devName:req.body.developerName,
         publisherName:req.body.publisherName,
         Category:req.body.Category,
+        OS:req.body.OS,
         appScreenshot:extractImageUrl(appScreenshots[0]),
         appIcon:extractImageUrl(appIcon[0]),
       })
