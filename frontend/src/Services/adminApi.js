@@ -8,6 +8,14 @@ export const userBlock=(userId)=>{
     return adminInstance.post(`/userblock/${userId}`)
 }
 
+export const approveApp=(appId)=>{
+    return adminInstance.post(`/approveApp/${appId}`)
+}
+
+export const blockApp=(appId)=>{
+    return adminInstance.post(`/blockApp/${appId}`)
+}
+
 export const userlist=()=>{
     return adminInstance.get("/userlist")
 }
@@ -20,6 +28,3 @@ export const totalApplications=()=>{
     return adminInstance.get("/allApp")
 }
 
-export const approveApp=(appId)=>{
-    return adminInstance.post(`/approveApp/${appId}`)
-}

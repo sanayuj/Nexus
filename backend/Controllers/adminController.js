@@ -101,11 +101,19 @@ module.exports.fetchAllApps=async(req,res)=>{
 module.exports.appAproval=async(req,res)=>{
   try {
     const appId=req.params.id
-    console.log(appId,"******");
     const appDetails = await appModel.findByIdAndUpdate(appId, { verified: true }, { new: true });
     return res.json({message:"Application Approved",status:true,appDetails})
   } catch (error) {
-    console.log(error);
     return res.json({message:"Internal server error",status:false})
+  }
+}
+
+module.exports.appBlock=async(req,res)=>{
+  try {
+    const appId=req.params.id
+    const appDetails = await appModel.findByIdAndUpdate(appId, { verified: false }, { new: true });
+    return res.json({message:"Application Blocked",status:true,appDetails})
+  } catch (error) {
+    return res.json({message:"internal server error",status:false})
   }
 }
