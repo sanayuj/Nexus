@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AdminLogin.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { adminLogin } from "../../../Services/adminApi";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAdminDetails } from "../../../Features/setAdmin";
 
 export default function AdminLogin() {
 const dispatch=useDispatch()
 const navigate=useNavigate()
+
+const admin=useSelector((state)=>state.admin.value)
+
+useEffect(()=>{
+  if(admin){
+    navigate("/admin/home")
+  }
+})
+
+
 
   const initialValues = {
     email: "",
@@ -30,9 +40,10 @@ const navigate=useNavigate()
 
   const onSubmit = async (values) => {
     const {data}=await adminLogin(values)
-    console.log(data);
+    console.log(data.adminDetails);
     if(data.status){
-      dispatch(setAdminDetails(data.adminDetails))
+
+      dispatch(setAdminDetails(data?.adminDetails))
       localStorage.setItem("adminJWT", data.token);
       toast.success(data.message)
       navigate("/admin/home")

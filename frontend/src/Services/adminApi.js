@@ -12,3 +12,11 @@ export const userBlock=(userId)=>{
 export const userlist=()=>{
     return adminInstance.get("/userlist")
 }
+
+export const adminHeader=()=>{
+    return adminInstance.get("/adminHeader")
+}
+
+export const totalApplications=()=>{
+    return adminInstance.get("/allApp")
+}

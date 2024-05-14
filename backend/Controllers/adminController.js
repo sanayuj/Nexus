@@ -1,15 +1,15 @@
-const userModel=require("../Models/userModel");
+const userModel = require("../Models/userModel");
 const jwt = require("jsonwebtoken");
-const adminModel=require("../Models/adminModel")
-const bcrypt=require("bcrypt")
-const maxAge=3 * 24 * 60 * 60;
+const adminModel = require("../Models/adminModel");
+const appModel=require("../Models/appModel")
+const bcrypt = require("bcrypt");
+const maxAge = 3 * 24 * 60 * 60;
 
 const createAdminToken = (id) => {
   return jwt.sign({ id }, "adminJWT", {
     expiresIn: maxAge,
   });
 };
-
 
 module.exports.adminLogin = async (req, res, next) => {
   const { email, password } = req.body;
@@ -35,43 +35,60 @@ module.exports.adminLogin = async (req, res, next) => {
   }
 };
 
-
-
-
-module.exports.userList=async(req,res,next)=>{
-    try{
-        const userlist=await userModel.find()
-        if(userlist){
-            res.json({status:true,userlist})
-        }
-    }catch(error){
-        console.log(error);
+module.exports.userList = async (req, res, next) => {
+  try {
+    const userlist = await userModel.find();
+    if (userlist) {
+      res.json({ status: true, userlist });
     }
-}
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-module.exports.blockUser=async(req,res)=>{
-    try{
-        const id=req.params.id
-        const userDetails = await userModel.findById(id);
-        console.log(userDetails,"Student Details!!")
-        userDetails.blockStatus = !userDetails.blockStatus;
-        await userDetails.save();
-        if (userDetails.blockStatus) {
-          return res.json({
-            message: "User blocked successfully",
-            status: userDetails.blockStatus,
-          });
-        } else {
-            return res.json({
-              message: "User unblocked successfully",
-              status: userDetails.blockStatus,
-            });
-          }
-
-    } catch (error) {
-        return res.json({
-            message: "Internal server error in disable user ",
-            status: false,
-          })
+module.exports.blockUser = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const userDetails = await userModel.findById(id);
+    console.log(userDetails, "Student Details!!");
+    userDetails.blockStatus = !userDetails.blockStatus;
+    await userDetails.save();
+    if (userDetails.blockStatus) {
+      return res.json({
+        message: "User blocked successfully",
+        status: userDetails.blockStatus,
+      });
+    } else {
+      return res.json({
+        message: "User unblocked successfully",
+        status: userDetails.blockStatus,
+      });
     }
+  } catch (error) {
+    return res.json({
+      message: "Internal server error in disable user ",
+      status: false,
+    });
+  }
+};
+
+module.exports.adminHeader = async (req, res) => {
+  try {
+    const adminUser = req.admin;
+    return res.json({ status: true, admin: adminUser });
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: "Internal server error", status: false });
+  }
+};
+
+module.exports.fetchAllApps=async(req,res)=>{
+  try {
+
+    const Data=await appModel.find()
+    return res.json({Data,status:true})
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
 }
