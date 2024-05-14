@@ -1,5 +1,5 @@
 const express=require("express")
-const {userList,blockUser, adminLogin, adminHeader, fetchAllApps, appAproval, appBlock}=require("../Controllers/adminController")
+const {userList,blockUser, adminLogin, adminHeader, fetchAllApps, appAproval, appBlock, viewComplaints}=require("../Controllers/adminController")
 const adminAuth=require("../Middleware/adminAuth")
 const router=express.Router()
 
@@ -13,5 +13,6 @@ router.post("/blockApp/:id",appBlock)
 router.get("/userlist",userList)
 router.get("/adminHeader",adminAuth ,adminHeader)
 router.get("/allApp",adminAuth,fetchAllApps)
+router.get("/viewComplaint",adminAuth,viewComplaints)
 
 module.exports=router

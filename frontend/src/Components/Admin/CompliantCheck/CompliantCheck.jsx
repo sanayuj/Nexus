@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './CompliantCheck.css'
+import { viewCompliant } from '../../../Services/adminApi'
+
 
 export default function CompliantCheck() {
+
+    useEffect(()=>{
+       viewCompliant().then((value)=>{
+        console.log(value,"%%%%%");
+       })
+    },[])
+
   return (
     <div>
         

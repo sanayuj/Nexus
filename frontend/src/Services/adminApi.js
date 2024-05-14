@@ -28,3 +28,7 @@ export const totalApplications=()=>{
     return adminInstance.get("/allApp")
 }
 
+export const viewCompliant=()=>{
+    return adminInstance.get("/viewComplaint")
+}
+
