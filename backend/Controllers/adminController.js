@@ -85,7 +85,12 @@ module.exports.adminHeader = async (req, res) => {
 module.exports.fetchAllApps=async(req,res)=>{
   try {
 
-    const Data=await appModel.find()
+    const Data=await appModel.find().populate({
+      path: "userId",
+      model: "user",
+      select: "username email verified blockStatus",
+    });
+    console.log(Data,"All Application Details !!!!");
     return res.json({Data,status:true})
   } catch (error) {
     console.log(error);

@@ -1,7 +1,6 @@
 import { adminInstance } from "../Axios/axiosinstance";
 
 export const adminLogin=(values)=>{
-    console.log(values,"~~~~~~~");
     return adminInstance.post("/adminLogin",{...values})
 }
 
