@@ -97,3 +97,15 @@ module.exports.fetchAllApps=async(req,res)=>{
     return res.json({message:"Internal server error",status:false})
   }
 }
+
+module.exports.appAproval=async(req,res)=>{
+  try {
+    const appId=req.params.id
+    console.log(appId,"******");
+    const appDetails = await appModel.findByIdAndUpdate(appId, { verified: true }, { new: true });
+    return res.json({message:"Application Approved",status:true,appDetails})
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}

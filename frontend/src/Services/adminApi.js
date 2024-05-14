@@ -19,3 +19,7 @@ export const adminHeader=()=>{
 export const totalApplications=()=>{
     return adminInstance.get("/allApp")
 }
+
+export const approveApp=(appId)=>{
+    return adminInstance.post(`/approveApp/${appId}`)
+}

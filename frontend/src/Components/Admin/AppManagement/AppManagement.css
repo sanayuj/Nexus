@@ -58,7 +58,20 @@
     width: 130px;
     font-size: 20px;
     color: #EEEEEE;
-    background-color: rgb(13, 171, 13);
+    box-shadow: none;
+    /* background-color: green; */
+}
+
+#amb23{
+    position: relative;
+    top: 5px;
+    left: -0px;
+    height: 40px;
+    width: 130px;
+    font-size: 20px;
+    color: #EEEEEE;
+    box-shadow: none;
+    background-color: green;
 }
 #amb3{
     position: relative;
