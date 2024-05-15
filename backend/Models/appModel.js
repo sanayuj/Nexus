@@ -46,6 +46,10 @@ const appSchema = new mongoose.Schema({
       verified:{
         type:Boolean,
         default:false
+      },
+      Downloaded:{
+        type:Boolean,
+        default:false
       }
     })
 

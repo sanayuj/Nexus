@@ -35,3 +35,20 @@ module.exports.FetchGames = async (req, res) => {
     });
   }
 };
+
+
+module.exports.UtilityApps=async(req,res)=>{
+  try {
+
+
+    const data = await appModel.find({Category:"Utilities"});
+    if (data) {
+      return res.json({ data, status: true });
+    } else {
+      return res.json({ status: false });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}

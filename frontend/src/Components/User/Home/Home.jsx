@@ -6,18 +6,16 @@ import { getUploadedApps } from "../../../Services/userApi";
 export default function Home() {
   const [appDetails, setAppDetails] = useState([]);
 
-  const DownloadSelectedApp=(apkFile)=>{
-    console.log(apkFile,"%%%%");
+  const DownloadSelectedApp = (apkFile) => {
+    console.log(apkFile, "%%%%");
     const fileUrl = `http://localhost:4000/img/${apkFile}`;
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     link.href = fileUrl;
-    link.setAttribute('download', '');
+    link.setAttribute("download", "");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-  }
-
+  };
 
   useEffect(() => {
     getUploadedApps().then((value) => {
@@ -91,28 +89,34 @@ export default function Home() {
                 </button>
               </div>
               {appDetails.length > 0 ? (
-                appDetails.map((value,id)=>(
-                <div className="card" id="hdiv" key={id}>
-                  <img
-                    src={`http://localhost:4000/img/${value?.appIcon}`}
-                    id="himg"
-                    className="card-img-top"
-                    alt="..."
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title" id="hh">
-                     {value?.appName}
-                    </h5>
-                    <br />
-                    <p className="card-text">{value?.Category}</p>
-                    <button id="hb" onClick={()=>{DownloadSelectedApp(value?.apkFile)}}>
-
-                      <i className="bi bi-download" id="hi"></i>Download
-                    </button>
+                appDetails.map((value, id) => (
+                  <div className="card" id="hdiv" key={id}>
+                    <img
+                      src={`http://localhost:4000/img/${value?.appIcon}`}
+                      id="himg"
+                      className="card-img-top"
+                      alt="..."
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title" id="hh">
+                        {value?.appName}
+                      </h5>
+                      <br />
+                      <p className="card-text">{value?.Category}</p>
+                      <button
+                        id="hb"
+                        onClick={() => {
+                          DownloadSelectedApp(value?.apkFile);
+                        }}
+                      >
+                        <i className="bi bi-download" id="hi"></i>Download
+                      </button>
+                    </div>
                   </div>
-                </div>
                 ))
-              ) : null}
+              ) : (
+                <p className="notAvailable">Application not available</p>
+              )}
             </div>
           </div>
         </section>

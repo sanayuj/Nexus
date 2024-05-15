@@ -2,6 +2,7 @@ import React from 'react'
 import './AdminApps.css'
 
 export default function AdminApps() {
+    
   return (
     <div>
       <div class="div2" id='div2'>

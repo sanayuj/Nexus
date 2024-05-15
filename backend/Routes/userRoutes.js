@@ -7,7 +7,7 @@ const appDetails=createMulterInstance("AppDetails")
 const multer = require("multer");
 // const appDetails = multer({ dest: 'public/images/AppDetails' });
 const userAuth=require("../Middleware/userAuth")
-const { showAllApps } = require("../Controllers/appController")
+const { showAllApps, UtilityApps } = require("../Controllers/appController")
 
 router.post('/register',register)
 
@@ -27,5 +27,6 @@ router.post("/feedback/:userId",userAuth,userFeedback)
 
 router.get("/header",userAuth,Header)
 router.get("/showApp",showAllApps)
+router.get("/getUtilityApp",UtilityApps)
 
 module.exports=router

@@ -29,4 +29,6 @@ export const getUploadedApps=()=>{
     return userInstance.get("/showApp")
 }
 
-
+export const getUtilityApps=()=>{
+    return userInstance.get("/getUtilityApp")
+}
