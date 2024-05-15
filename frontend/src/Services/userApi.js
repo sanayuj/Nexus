@@ -32,3 +32,7 @@ export const getUploadedApps=()=>{
 export const getUtilityApps=()=>{
     return userInstance.get("/getUtilityApp")
 }
+
+export const getGameApps=()=>{
+    return userInstance.get("/getGamesApp")
+}
