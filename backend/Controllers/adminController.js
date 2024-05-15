@@ -121,7 +121,11 @@ module.exports.appBlock=async(req,res)=>{
 
 module.exports.viewComplaints=async(req,res)=>{
   try {
-    const complaintDetails=await feedbackModel.find({category:"Complaint"})
+    const complaintDetails=await feedbackModel.find({category:"Complaint"}).populate({
+      path: "userId",
+      model: "user",
+      select: "username email verified blockStatus",
+    });
     return res.json({message:"Complaints",status:true,complaintDetails})
   } catch (error) {
     console.log(error);
