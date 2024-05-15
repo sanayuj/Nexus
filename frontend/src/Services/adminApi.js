@@ -32,3 +32,6 @@ export const viewCompliant=()=>{
     return adminInstance.get("/viewComplaint")
 }
 
+export const fetchAllGames=()=>{
+    return adminInstance.get("/allGameApp")
+}

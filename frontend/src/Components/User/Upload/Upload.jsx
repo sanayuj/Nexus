@@ -217,6 +217,7 @@ export default function Upload() {
                             <option value="Travel">Travel</option>
                             <option value="Finance">Finance</option>
                             <option value="Shopping">Shopping</option>
+                            <option value="Game">Game</option>
                             <option value="Utilities">Utilities</option></select><br /><hr id='hr1'/><br />
                             {formik.touched.Category && formik.errors.Category ?(
                               <p className='text-danger errorMsg' style={{fontSize:"12px",margin:"0px",position:"relative",top:"-90px"}}>
