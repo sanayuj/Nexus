@@ -23,6 +23,7 @@ export default function EditProfile() {
         setContact(value?.data?.user?.contactNo);
         setEmail(value?.data?.user?.email);
         setImage(value?.data?.user?.profileImage);
+        console.log(image,"#####");
       }
     });
   }, []);
@@ -108,9 +109,10 @@ export default function EditProfile() {
                   id="eimg"
                   className="img-raised rounded-circle img-fluid"
                   src={
-                    formik.values.profileImage
+                    (image?`http://localhost:4000/img/${image}`:(  formik.values.profileImage
                       ? URL.createObjectURL(formik.values.profileImage)
-                      : ""
+                      : ""))
+                    
                   }
                   alt=""
                 />

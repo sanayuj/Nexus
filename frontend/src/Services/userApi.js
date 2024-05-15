@@ -21,6 +21,9 @@ export const updateUserProfile=(values,userId)=>{
     return userInstance.post(`/profileUpdation/${userId}`,{...values},{headers:{"content-Type":"multipart/form-data"}})
 }
 
+export const getUserDetails=(userId)=>{
+    return userInstance.post("/header")
+}
 
 
 //GET METHODS

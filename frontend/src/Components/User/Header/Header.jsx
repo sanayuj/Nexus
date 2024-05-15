@@ -22,7 +22,6 @@ export default function Header() {
 
     useEffect(()=>{
         userHeader().then((response)=>{
-            console.log(response)
             if(response.data.status){
                 setData(response.data.user)
                 dispatch(setUserDetails(response.data.user));
@@ -39,8 +38,8 @@ export default function Header() {
     };
   return (
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container-fluid">
                 <h2 id='t2'>Nexus</h2>
                     <select name="" id="osfilter">
                         <option value="">Choose OS</option>
@@ -49,31 +48,31 @@ export default function Header() {
                         <option value="">Mac</option>
                     </select><br /><hr id='hrfilter'/>
                     <input type="text" id='search' placeholder='Search..'/>
-                    <button id='searchicon'><i class="bi bi-search" id='search1'></i></button>
-                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                        <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                        <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='notification'>
-                        <i class="bi bi-bell" id='notify'></i>
+                    <button id='searchicon'><i className="bi bi-search" id='search1'></i></button>
+                    <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                        <ul className="navbar-nav">
+                        <li className="nav-item dropdown">
+                        <button className="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id='notification'>
+                        <i className="bi bi-bell" id='notify'></i>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-dark" id='notification_list'>
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul className="dropdown-menu dropdown-menu-dark" id='notification_list'>
+                            <li><p className="dropdown-item" href="#">Action</p></li>
+                            <li><p className="dropdown-item" href="#">Another action</p></li>
+                            <li><p className="dropdown-item" href="#">Something else here</p></li>
                         </ul>
                         </li>
                         </ul>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id='profileicon'>
-                        <i class="bi bi-person-circle" id='profile'></i>
+                    <div className="dropdown">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id='profileicon'>
+                        <i className="bi bi-person-circle" id='profile'></i>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-dark" id='profile_details'>
-                            <li><p class="dropdown-item active" >{data?.username}</p></li>
-                            <li><p class="dropdown-item" >{data?.email}</p></li>
-                            <li><button class="dropdown-item" onClick={()=>userLogOut()}>Sign out</button></li>
-                            <li><hr class="dropdown-divider" id='underline'/></li>
-                            <Link to='../profile'id='link'><li><a class="dropdown-item" href="#">View Profile</a></li></Link>
+                        <ul className="dropdown-menu dropdown-menu-dark" id='profile_details'>
+                            <li><p className="dropdown-item active" >{data?.username}</p></li>
+                            <li><p className="dropdown-item" >{data?.email}</p></li>
+                            <li><button className="dropdown-item" onClick={()=>userLogOut()}>Sign out</button></li>
+                            <li><hr className="dropdown-divider" id='underline'/></li>
+                            <Link to='../profile'id='link'><li><p className="dropdown-item" href="#">View Profile</p></li></Link>
                         </ul>
                     </div>
             </div>
