@@ -1,9 +1,10 @@
 
-const {register, login, Header, appUpload, userFeedback}=require("../Controllers/userController")
+const {register, login, Header, appUpload, userFeedback, updateProfile}=require("../Controllers/userController")
 const express=require("express")
 const createMulterInstance = require("../Middleware/multer")
 const router=express.Router()
 const appDetails=createMulterInstance("AppDetails")
+const userProfileImage=createMulterInstance("UserProfileImages")
 const multer = require("multer");
 // const appDetails = multer({ dest: 'public/images/AppDetails' });
 const userAuth=require("../Middleware/userAuth")
@@ -21,6 +22,7 @@ router.post("/upload/:userId",userAuth,appDetails.fields([
 ]),appUpload);
 
 router.post("/feedback/:userId",userAuth,userFeedback)
+router.post("/profileUpdation/:userId",userAuth,userProfileImage.single("profileImage"),updateProfile)
 
 
 //GET METHODS

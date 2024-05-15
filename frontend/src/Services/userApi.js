@@ -17,6 +17,10 @@ export const sendFeedback=(feedStatus,category,comments,userId)=>{
 return userInstance.post(`/feedback/${userId}`,{feedStatus,category,comments})
 }
 
+export const updateUserProfile=(values,userId)=>{
+    return userInstance.post(`/profileUpdation/${userId}`,{...values},{headers:{"content-Type":"multipart/form-data"}})
+}
+
 
 
 //GET METHODS

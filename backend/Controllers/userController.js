@@ -137,3 +137,42 @@ module.exports.userFeedback=async(req,res,next)=>{
     return res.json({message:"Unable send ",status:false})
   }
 }
+
+module.exports.updateProfile = async (req, res) => {
+  try {
+    const extractImageUrl = (fullPath) => {
+      const relativePath = path.relative("public/images", fullPath);
+      const imageUrl = relativePath.replace(/\\/g, "/");
+      return imageUrl;
+    };
+
+    const userId = req.params.userId;
+    console.log(userId, "^&^&^&^&6767667");
+    console.log(req.body, "Body");
+    console.log(req.file.path, "File");
+
+    const updatedUser = await userModel.findOneAndUpdate(
+      {_id: userId },
+      {
+        $set: {
+          username: req.body.epname,
+          contactNo: req.body.epcno,
+          email: req.body.epmail,
+          profileImage: req.file ? extractImageUrl(req.file.path) : undefined,
+        }
+      },
+      { new: true }
+    );
+
+    console.log(updatedUser, "Updated User");
+
+    if (updatedUser) {
+      res.json({ message: "Profile updated successfully", status: true, user: updatedUser });
+    } else {
+      res.json({ message: "No user found or unable to update profile", status: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error", status: false });
+  }
+};

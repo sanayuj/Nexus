@@ -7,7 +7,6 @@ export default function Profile() {
   const [userDetails, setUserDetails] = useState({});
   const user = useSelector((state) => state?.user?.value);
   useEffect(() => {
-   
     setUserDetails(user);
     console.log(user);
   }, []);
@@ -29,7 +28,12 @@ export default function Profile() {
                     />
                     <br />
                     <br />
-                    <input type="text" id="pname" value={userDetails?.username} readOnly />
+                    <input
+                      type="text"
+                      id="pname"
+                      value={userDetails?.username}
+                      readOnly
+                    />
                     <br />
                     <br />
                     <Link to="../edit_profile" id="link">
@@ -39,7 +43,12 @@ export default function Profile() {
                     </Link>
                   </div>
                   <div class="name">
-                    <input type="text" id="pmail" value={userDetails?.email} readOnly />
+                    <input
+                      type="text"
+                      id="pmail"
+                      value={userDetails?.email}
+                      readOnly
+                    />
                     <br />
                     <br />
                     <input
@@ -62,7 +71,7 @@ export default function Profile() {
               <br />
               <input
                 type="text"
-                value={date.toLocaleString('en-US')}
+                value={date.toLocaleString("en-US")}
                 readOnly
               />
             </div>
