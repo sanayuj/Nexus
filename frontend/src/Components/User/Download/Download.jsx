@@ -3,10 +3,12 @@ import imageOne from "./12.jpg";
 import "./Download.css";
 import { useNavigate, useParams } from "react-router-dom";
 import {
+  addToWishlist,
   appAddtoProfile,
   getSelectedAppsDetails,
 } from "../../../Services/userApi";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function Download() {
   const appId = useParams().appId;
@@ -26,6 +28,17 @@ export default function Download() {
     link.click();
     document.body.removeChild(link);
   };
+
+  const addToWishlistFun=(userId,Data)=>{
+    addToWishlist(userId,Data).then((value)=>{
+      if(value?.data?.status){
+        toast.success(value?.data?.message)
+      }else{
+        toast.error(value?.data?.message)
+      }
+
+    })
+  }
 
   useEffect(() => {
     getSelectedAppsDetails(appId).then((value) => {
@@ -89,10 +102,15 @@ export default function Download() {
                   >
                     Download
                   </button>
+                
                 </div>
+
                 <br />
+                <button id="lab3" align="center" onClick={()=>addToWishlistFun(userId,selectedData)}>
+                 Add to wishlist
+                </button>
                 <div align="center">
-                  <label htmlFor="" id="lab3" align="center">
+                  <label htmlFor="" id="" align="center">
                     {selectedData?.Category}
                   </label>
                 </div>

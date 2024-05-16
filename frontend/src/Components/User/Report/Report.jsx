@@ -34,9 +34,9 @@ export default function Report() {
   const onSubmit = async (values, { resetForm }) => {
     console.log(values);
     appReport(userId, appId, values).then((values) => {
-      console.log(values?.data, "😀");
       if (values?.data?.status) {
         toast.success(values?.data?.message);
+        resetForm()
       } else {
         toast.error(values?.data?.message);
       }

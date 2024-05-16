@@ -1,5 +1,8 @@
 const appModel = require("../Models/appModel");
 const reportedAppModel=require("../Models/reportAppModel")
+const wishlistModel=require("../Models/wishListModel")
+
+
 
 module.exports.showAllApps = async (req, res) => {
   try {
@@ -106,5 +109,32 @@ module.exports.appReport=async(req,res)=>{
     console.log(error);
     return res.json({message:"Internal server error",status:false})
     
+  }
+}
+
+module.exports.addToWishlist=async(req,res)=>{
+  try {
+    const userId=req.params.userId
+    const { _id: appId } = req.body; 
+    const existingEntry = await wishlistModel.findOne({ userId, appId });
+
+    if (existingEntry) {
+      return res.json({ message: "App already exists in the wishlist", status: false });
+    }
+    const WishlistDetails = new wishlistModel({
+      userId:userId,
+      appId:appId
+    })
+
+    const data= await WishlistDetails.save()
+    if(data){
+      return res.json({message:"Added to Wishlist",status:true,data})
+    }else{
+      return res.json({message:"Unable to add",status:false})
+    }
+
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
   }
 }

@@ -29,6 +29,10 @@ export const appReport=(userId,appId,values)=>{
     return userInstance.post('/report',{userId,appId,...values})
 }
 
+export const addToWishlist=(userId,values)=>{
+    return userInstance.post(`/addToWishist/${userId}`,{...values})
+}
+
 
 //GET METHODS
 
