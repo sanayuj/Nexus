@@ -147,9 +147,6 @@ module.exports.updateProfile = async (req, res) => {
     };
 
     const userId = req.params.userId;
-    console.log(userId, "^&^&^&^&6767667");
-    console.log(req.body, "Body");
-    console.log(req.file.path, "File");
 
     const updatedUser = await userModel.findOneAndUpdate(
       {_id: userId },
@@ -176,3 +173,48 @@ module.exports.updateProfile = async (req, res) => {
     res.status(500).json({ message: "Internal server error", status: false });
   }
 };
+
+
+module.exports.appAddtoUser = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const appId = req.body.appId;
+
+    const user = await userModel.findOneAndUpdate(
+      { _id: userId, downloadedAppsId: { $ne: appId } }, 
+      { $push: { downloadedAppsId: appId } },
+      { new: true }
+    );
+
+    if (user) {
+      res.json({ message: "App added to user successfully", status: true, user: user });
+    } else {
+      res.json({ message: "App already exists in user's downloaded apps", status: true, user: null });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error", status: false });
+  }
+};
+
+
+module.exports.fetchUserInstalledApps=async(req,res)=>{
+  try {
+    const downloadedAppsIds=req.user.downloadedAppsId
+    console.log(downloadedAppsIds,"fetchUserInstalledApps");
+
+
+    if (!Array.isArray(downloadedAppsIds) || downloadedAppsIds.length === 0) {
+      return res.json({ message: "User has no installed apps", status: true, apps: [] });
+    }
+
+    const appIds = downloadedAppsIds.map(appId => appId.toString());
+
+    const installedApps = await appModel.find({ _id: { $in: appIds } });
+
+    res.json({ message: "User installed apps fetched successfully", status: true, apps: installedApps });
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}

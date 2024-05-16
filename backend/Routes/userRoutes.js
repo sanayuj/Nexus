@@ -1,5 +1,5 @@
 
-const {register, login, Header, appUpload, userFeedback, updateProfile}=require("../Controllers/userController")
+const {register, login, Header, appUpload, userFeedback, updateProfile, appAddtoUser, fetchUserInstalledApps}=require("../Controllers/userController")
 const express=require("express")
 const createMulterInstance = require("../Middleware/multer")
 const router=express.Router()
@@ -23,6 +23,7 @@ router.post("/upload/:userId",userAuth,appDetails.fields([
 
 router.post("/feedback/:userId",userAuth,userFeedback)
 router.post("/profileUpdation/:userId",userAuth,userProfileImage.single("profileImage"),updateProfile)
+router.post("/addApptoUser", userAuth, appAddtoUser);
 
 
 //GET METHODS
@@ -31,5 +32,8 @@ router.get("/header",userAuth,Header)
 router.get("/showApp",showAllApps)
 router.get("/getUtilityApp",UtilityApps)
 router.get("/getGamesApp",GameApps)
+router.get("/userInstalledApp",userAuth,fetchUserInstalledApps)
+
+
 
 module.exports=router

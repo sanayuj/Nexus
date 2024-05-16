@@ -21,9 +21,10 @@ export const updateUserProfile=(values,userId)=>{
     return userInstance.post(`/profileUpdation/${userId}`,{...values},{headers:{"content-Type":"multipart/form-data"}})
 }
 
-export const getUserDetails=(userId)=>{
-    return userInstance.post("/header")
-}
+export const appAddtoProfile = (userId, appId) => {
+    return userInstance.post('/addApptoUser',{userId,appId});
+  }
+  
 
 
 //GET METHODS
@@ -42,4 +43,12 @@ export const getUtilityApps=()=>{
 
 export const getGameApps=()=>{
     return userInstance.get("/getGamesApp")
+}
+
+export const getUserDetails=()=>{
+    return userInstance.get("/header")
+}
+
+export const getUserInstalledApps=()=>{
+    return userInstance.get("/userInstalledApp")
 }

@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import imageOne from "./12.jpg";
 import "./Home.css";
-import { getUploadedApps } from "../../../Services/userApi";
+import { appAddtoProfile, getUploadedApps } from "../../../Services/userApi";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const [appDetails, setAppDetails] = useState([]);
+  const userId = useSelector((state) => state?.user?.value?._id);
 
-  const DownloadSelectedApp = (apkFile) => {
-    console.log(apkFile, "%%%%");
+  const DownloadSelectedApp = (apkFile, appId) => {
+    appAddtoProfile(userId, appId).then((value) => {
+      console.log(value, "Data Downloaded");
+    });
     const fileUrl = `http://localhost:4000/img/${apkFile}`;
     const link = document.createElement("a");
     link.href = fileUrl;
@@ -106,7 +110,7 @@ export default function Home() {
                       <button
                         id="hb"
                         onClick={() => {
-                          DownloadSelectedApp(value?.apkFile);
+                          DownloadSelectedApp(value?.apkFile, value?._id);
                         }}
                       >
                         <i className="bi bi-download" id="hi"></i>Download

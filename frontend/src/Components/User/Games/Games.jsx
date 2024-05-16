@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./Games.css";
-import { getGameApps } from "../../../Services/userApi";
+import { appAddtoProfile, getGameApps } from "../../../Services/userApi";
+import { useSelector } from "react-redux";
 
 export default function Games() {
   const [games, setGames] = useState([]);
+  const userId = useSelector((state) => state?.user?.value?._id);
   useEffect(() => {
     getGameApps().then((value) => {
       console.log(value.data, "Games");
@@ -13,8 +15,10 @@ export default function Games() {
     });
   }, []);
 
-  const DownloadSelectedApp = (apkFile) => {
-    console.log(apkFile, "%%%%");
+  const DownloadSelectedApp = (apkFile,appId) => {
+    appAddtoProfile(userId, appId).then((value) => {
+        console.log(value, "Data Downloaded");
+      });
     const fileUrl = `http://localhost:4000/img/${apkFile}`;
     const link = document.createElement("a");
     link.href = fileUrl;
@@ -99,7 +103,7 @@ export default function Games() {
                       <br />
                       <p class="card-text">{value?.Category}</p>
                       <button id="hb"  onClick={() => {
-                          DownloadSelectedApp(value?.apkFile);
+                          DownloadSelectedApp(value?.apkFile,value?._id);
                         }}>
                         <i class="bi bi-download" id="hi"></i>Download
                       </button>

@@ -32,7 +32,11 @@ const userSchema= new mongoose.Schema({
     },
     profileImage:{
         type:String,
-    }
+    },
+    downloadedAppsId: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'AppDetails' 
+    }]
 });
 
 userSchema.pre("save",async function(next){
