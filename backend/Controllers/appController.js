@@ -1,5 +1,6 @@
 const appModel = require("../Models/appModel");
 
+
 module.exports.showAllApps = async (req, res) => {
   try {
     const data = await appModel.find();
@@ -63,5 +64,21 @@ module.exports.GameApps=async(req,res)=>{
   } catch (error) {
     console.log(error);
     return res.json({message:"Internal server error",status:"false"})
+  }
+}
+
+module.exports.selectedApps=async(req,res)=>{
+  try {
+    const appId=req.params.appId
+    const appData=await appModel.findById(appId)
+if(appData){
+  return res.json({message:"Success",status:true,appData})
+}
+return res.json({message:"Unable to fetch data",status:false})
+
+    
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
   }
 }

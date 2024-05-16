@@ -4,7 +4,7 @@
 #second_div{
     background-color: #22283144;
     margin-left: 60px;
-    height: 700px;
+    height: 600px;
     width: 400px;
     border-radius: 10px;
     box-shadow: 2px 3px 4px;
@@ -20,12 +20,16 @@
     width: 150px;
     border-radius: 10px;
 }
+.Screenimage{
+    width: 200px;
+    top: 0;
+}
 #btn2{
-    height: 40px;
-    width: 100px;
+    padding: 5px;
     background-color: #31363F;
     color: #EEEEEE;
     font-weight: bold;
+    border-radius: 4px;
 }
 #btn2:hover{
     background-color: #EEEEEE;
@@ -82,7 +86,7 @@
     background-color: #22283144;
     margin-left: 10px;
     width: 850px;
-    height: 1600px;
+    height: 900px;
     border-radius: 10px;
     box-shadow: 2px 3px 4px;
     position: relative;
@@ -183,6 +187,8 @@ left: 0px;
     border: none;
     color: #EEEEEE;
 }
-#iinp2{
+/* .appLogo{
+    align-items: center;
+    left: -40;
 
-}
+} */

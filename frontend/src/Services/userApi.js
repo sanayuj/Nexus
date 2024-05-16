@@ -52,3 +52,7 @@ export const getUserDetails=()=>{
 export const getUserInstalledApps=()=>{
     return userInstance.get("/userInstalledApp")
 }
+
+export const getSelectedAppsDetails=(appId)=>{
+    return userInstance.get(`/selectedAppDetails/${appId}`)
+}

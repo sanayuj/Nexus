@@ -22,7 +22,7 @@ function UserRoutes() {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/apps' element={<ApplicationPage/>}/>
         <Route path='/games' element={<GamePage/>}/>
-        <Route path='/install' element={<DownloadPage/>}/>
+        <Route path='/install/:appId' element={<DownloadPage/>}/>
         <Route path='/feedback' element={<FeedbackPage/>}/>
         <Route path='/upload' element={<UploadPage/>}/>
         <Route path='/report' element={<ReportPage/>}/>

@@ -44,8 +44,7 @@ export default function Library() {
                 installedApp.map((value, index) => (
                   <div class="card" id="ldiv" key={index}>
                     <img
-                      src={`http://localhost:4000/img/${value?.appIcon
-}`}
+                      src={`http://localhost:4000/img/${value?.appIcon}`}
                       class="card-img-top"
                       id="limg"
                       alt="App Logo"

@@ -8,7 +8,7 @@ const userProfileImage=createMulterInstance("UserProfileImages")
 const multer = require("multer");
 // const appDetails = multer({ dest: 'public/images/AppDetails' });
 const userAuth=require("../Middleware/userAuth")
-const { showAllApps, UtilityApps, GameApps } = require("../Controllers/appController")
+const { showAllApps, UtilityApps, GameApps, selectedApps } = require("../Controllers/appController")
 
 
 //POST METHODS
@@ -33,7 +33,6 @@ router.get("/showApp",showAllApps)
 router.get("/getUtilityApp",UtilityApps)
 router.get("/getGamesApp",GameApps)
 router.get("/userInstalledApp",userAuth,fetchUserInstalledApps)
-
-
+router.get("/selectedAppDetails/:appId",userAuth,selectedApps)
 
 module.exports=router

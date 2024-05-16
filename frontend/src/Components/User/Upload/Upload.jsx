@@ -26,7 +26,6 @@ export default function Upload() {
   const validationSchema = Yup.object({
     appName: Yup.string()
       .min(3, "*Name must be at least 3 characters long")
-      .matches(/^[A-Za-z]+$/, "* Name must only contain characters")
       .required("* This field is required"),
     appDescription: Yup.string()
       .min(3, "*Name must be at least 3 characters long")
