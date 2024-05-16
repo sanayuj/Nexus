@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Games.css";
 import { appAddtoProfile, getGameApps } from "../../../Services/userApi";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Games() {
   const [games, setGames] = useState([]);
   const userId = useSelector((state) => state?.user?.value?._id);
+  const navigate=useNavigate()
   useEffect(() => {
     getGameApps().then((value) => {
       console.log(value.data, "Games");
@@ -94,7 +96,7 @@ export default function Games() {
               </div>
               {games.length > 0 ? (
                 games.map((value,index) => (
-                  <div class="card" id="hdiv" key={index}>
+                  <div class="card" id="hdiv" onClick={()=>navigate(`/install/${value?._id}`)} key={index}>
                     <img src={`http://localhost:4000/img/${value?.appIcon}`} id="himg" class="card-img-top" alt="..." />
                     <div class="card-body">
                       <h5 class="card-title" id="hh">

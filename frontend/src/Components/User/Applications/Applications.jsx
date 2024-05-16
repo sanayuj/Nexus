@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Applications.css";
 import { appAddtoProfile, getUtilityApps } from "../../../Services/userApi";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Applications() {
   const [utilityApp, setUtilityApp] = useState([]);
   const userId = useSelector((state) => state?.user?.value?._id);
+  const navigate=useNavigate()
   useEffect(() => {
     getUtilityApps().then((value) => {
       console.log(value?.data?.data, "%%%%");
@@ -92,7 +94,7 @@ export default function Applications() {
               </div>
               {utilityApp.length > 0 ? (
                 utilityApp.map((value, index) => (
-                  <div class="card" id="hdiv" key={index}>
+                  <div class="card" id="hdiv" onClick={()=>navigate(`/install/${value?._id}`)} key={index}>
                     <img
                       src={`http://localhost:4000/img/${value?.appIcon}`}
                       id="himg"
