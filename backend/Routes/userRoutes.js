@@ -8,7 +8,7 @@ const userProfileImage=createMulterInstance("UserProfileImages")
 const multer = require("multer");
 // const appDetails = multer({ dest: 'public/images/AppDetails' });
 const userAuth=require("../Middleware/userAuth")
-const { showAllApps, UtilityApps, GameApps, selectedApps } = require("../Controllers/appController")
+const { showAllApps, UtilityApps, GameApps, selectedApps, appReport } = require("../Controllers/appController")
 
 
 //POST METHODS
@@ -24,7 +24,7 @@ router.post("/upload/:userId",userAuth,appDetails.fields([
 router.post("/feedback/:userId",userAuth,userFeedback)
 router.post("/profileUpdation/:userId",userAuth,userProfileImage.single("profileImage"),updateProfile)
 router.post("/addApptoUser", userAuth, appAddtoUser);
-
+router.post("/report",userAuth,appReport)
 
 //GET METHODS
 

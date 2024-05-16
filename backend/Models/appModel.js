@@ -50,7 +50,7 @@ const appSchema = new mongoose.Schema({
       Downloaded:{
         type:Boolean,
         default:false
-      }
+      },
     })
 
 

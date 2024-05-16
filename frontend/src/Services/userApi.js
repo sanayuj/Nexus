@@ -25,6 +25,9 @@ export const appAddtoProfile = (userId, appId) => {
     return userInstance.post('/addApptoUser',{userId,appId});
   }
   
+export const appReport=(userId,appId,values)=>{
+    return userInstance.post('/report',{userId,appId,...values})
+}
 
 
 //GET METHODS

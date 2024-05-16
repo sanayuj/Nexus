@@ -1,5 +1,5 @@
 const appModel = require("../Models/appModel");
-
+const reportedAppModel=require("../Models/reportAppModel")
 
 module.exports.showAllApps = async (req, res) => {
   try {
@@ -80,5 +80,31 @@ return res.json({message:"Unable to fetch data",status:false})
   } catch (error) {
     console.log(error);
     return res.json({message:"Internal server error",status:false})
+  }
+}
+
+module.exports.appReport=async(req,res)=>{
+  try {
+    console.log(req.body,"DDDDYYY");
+    const reportExist=await reportedAppModel.find({userId:req.body.userId,appId:req.body.appId})
+    if(reportExist){
+      return res.json({message:"Application Already Reported ",status:true})
+    }
+    const reportedApp=new reportedAppModel({
+      userId:req.body.userId,
+      appId:req.body.appId,
+      reportCategory:req.body.reportCategory,
+      reportMessage:req.body.reportMsg
+    })
+    const data=await reportedApp.save()
+    if(data){
+    return res.json({message:"Application Reported successfully",status:true,data})
+    }else{
+      return res.json({message:"Unable to Report",status:false})
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+    
   }
 }

@@ -25,7 +25,7 @@ function UserRoutes() {
         <Route path='/install/:appId' element={<DownloadPage/>}/>
         <Route path='/feedback' element={<FeedbackPage/>}/>
         <Route path='/upload' element={<UploadPage/>}/>
-        <Route path='/report' element={<ReportPage/>}/>
+        <Route path='/report/:appId' element={<ReportPage/>}/>
         <Route path='/library' element={<LibraryPage/>}/>
         <Route path='/profile' element={<ProfilePage/>}/>
         <Route path='/edit_profile' element={<EditProfilePage/>}/>
