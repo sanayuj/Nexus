@@ -138,3 +138,18 @@ module.exports.addToWishlist=async(req,res)=>{
     return res.json({message:"Internal server error",status:false})
   }
 }
+
+
+module.exports.getWishlistApp=async(req,res)=>{
+  try {
+    const userId=req.params.userId
+    const data=await wishlistModel.find({userId})
+    if(data){
+      return res.json({message:"Success",status:true,data})
+    }
+  
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}

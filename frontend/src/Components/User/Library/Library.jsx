@@ -1,18 +1,35 @@
 import React, { useEffect, useState } from "react";
 import "./Library.css";
 import imageOne from "./12.jpg";
-import { getUserInstalledApps } from "../../../Services/userApi";
+import { getUserInstalledApps, getWishlistApps } from "../../../Services/userApi";
+import { useSelector } from "react-redux";
 
 export default function Library() {
   const [installedApp, setInstalledApp] = useState([]);
+  const userId = useSelector((state) => state?.user?.value?._id);
+
+
   useEffect(() => {
+    allApps()
+  }, []);
+
+  const allApps=()=>{
     getUserInstalledApps().then((value) => {
-      console.log(value?.data?.apps, "7878787");
       if (value?.data?.status) {
         setInstalledApp(value?.data?.apps);
       }
     });
-  }, []);
+  }
+  const getWishlist=(userId)=>{
+    getWishlistApps(userId).then((value)=>{
+      console.log(value?.data);
+      if(value?.data?.status){
+        setInstalledApp(value?.data?.data)
+      }
+    })
+  }
+
+
   return (
     <div>
       <div class="div2" id="div2">
@@ -27,6 +44,7 @@ export default function Library() {
                   type="button"
                   class="btn btn-outline-primary"
                   id="libb1"
+                  onClick={()=>getUserInstalledApps()}
                 >
                   ALL
                 </button>
@@ -34,6 +52,7 @@ export default function Library() {
                   type="button"
                   class="btn btn-outline-secondary"
                   id="libb2"
+                  onClick={()=>getWishlist(userId)}
                 >
                   Wishlist
                 </button>
@@ -61,7 +80,7 @@ export default function Library() {
                   </div>
                 ))
               ) : (
-                <p>No installed apps</p>
+                <p>EMPTY</p>
               )}
             </div>
           </div>

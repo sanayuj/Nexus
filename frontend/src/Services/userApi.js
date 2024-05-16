@@ -34,6 +34,8 @@ export const addToWishlist=(userId,values)=>{
 }
 
 
+
+
 //GET METHODS
 
 export const userHeader=()=>{
@@ -62,4 +64,8 @@ export const getUserInstalledApps=()=>{
 
 export const getSelectedAppsDetails=(appId)=>{
     return userInstance.get(`/selectedAppDetails/${appId}`)
+}
+
+export const getWishlistApps=(userId)=>{
+    return userInstance.get(`/getWishlistApps/${userId}`)
 }
