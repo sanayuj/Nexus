@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './WindowsApps.css'
+import { fetchAllWindowsApps } from '../../../Services/adminApi'
 
 export default function WindowsApps() {
+const [windowsApp,setWindowsApp]=useState([])
+  useEffect(()=>{
+fetchAllWindowsApps().then((value)=>{
+  console.log(value.data,"WIndow");
+  if(value?.data?.status){
+    setWindowsApp(value?.data?.data)
+  }
+  
+})
+  },[])
   return (
     <div>
       <div id='div2'>
@@ -16,12 +27,16 @@ export default function WindowsApps() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td><img id='timg' src="" alt="App icon" /></td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+{windowsApp.length>0?(windowsApp.map((value,index)=>(
+                  <tr>
+                    <th scope="row">{index+1}</th>
+                    <td><img id='timg' src={`http://localhost:4000/img/${value.appIcon}`} alt="App icon" /></td>
+                    <td>{value?.appName}</td>
+                    <td>{value?.Category}</td>
                     </tr>
+                ))):(<p>Empty</p>)}
+                
+                   
                 </tbody>
             </table>
         </div>

@@ -36,7 +36,6 @@ fetchAllUtilityApps().then((value)=>{
                     <td>{value?.OS}</td>
                     </tr>
                 ))}
-                    
                 </tbody>
             </table>
         </div>

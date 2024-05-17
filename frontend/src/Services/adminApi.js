@@ -44,3 +44,15 @@ export const fetchAllGames=()=>{
 export const fetchAllUtilityApps=()=>{
     return adminInstance.get("/allUtilityApps")
 }
+
+export const fetchAllWindowsApps=()=>{
+    return adminInstance.get("/allwindowsApps")
+}
+
+export const fetchAllLinuxApps=()=>{
+    return adminInstance.get("/allLinuxApps")
+}
+
+export const fetchAllMacApps=()=>{
+    return adminInstance.get("/allMacsApps")
+}

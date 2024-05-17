@@ -1,7 +1,7 @@
 const express=require("express")
 const {userList,blockUser, adminLogin, adminHeader, fetchAllApps, appAproval, appBlock, viewComplaints}=require("../Controllers/adminController")
 const adminAuth=require("../Middleware/adminAuth")
-const { FetchGames, UtilityApps } = require("../Controllers/appController")
+const { FetchGames, UtilityApps, allWindowsApp, allLinuxApp, allMacApp } = require("../Controllers/appController")
 const router=express.Router()
 
 
@@ -17,5 +17,8 @@ router.get("/allApp",adminAuth,fetchAllApps)
 router.get("/viewComplaint",adminAuth,viewComplaints)
 router.get("/allGameApp",adminAuth,FetchGames)
 router.get("/allUtilityApps",adminAuth,UtilityApps)
+router.get("/allwindowsApps",adminAuth,allWindowsApp)
+router.get("/allLinuxApps",adminAuth,allLinuxApp)
+router.get("/allMacsApps",adminAuth,allMacApp)
 
 module.exports=router
