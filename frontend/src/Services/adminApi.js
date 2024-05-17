@@ -56,3 +56,11 @@ export const fetchAllLinuxApps=()=>{
 export const fetchAllMacApps=()=>{
     return adminInstance.get("/allMacsApps")
 }
+
+export const fetchUserFeedback=()=>{
+    return adminInstance.get("/fetchUserFeedback")
+}
+
+export const fetchFeedDetails=(feedId)=>{
+    return adminInstance.get(`/fetchFeedback/${feedId}`)
+}

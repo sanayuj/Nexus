@@ -1,7 +1,15 @@
 import React from 'react'
 import './FeedbackCheck.css'
+import { useParams } from 'react-router-dom'
+import { fetchFeedDetails } from '../../../Services/adminApi'
 
 export default function FeedbackCheck() {
+    const FeedId=useParams.feedId
+    useEffect(()=>{
+        fetchFeedDetails(FeedId).then((value)=>{
+            console.log(value?.data);
+        })
+    },[])
   return (
     <div>
         

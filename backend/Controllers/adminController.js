@@ -135,3 +135,12 @@ module.exports.viewComplaints=async(req,res)=>{
 }
 
 
+
+module.exports.fetchFeeddetails=async(req,res)=>{
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}

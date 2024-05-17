@@ -1,7 +1,8 @@
 const appModel = require("../Models/appModel");
 const reportedAppModel = require("../Models/reportAppModel");
 const wishlistModel = require("../Models/wishListModel");
-
+const feedbackModel=require("../Models/userFeedbackModel")
+const userModel=require("../Models/userModel")
 module.exports.showAllApps = async (req, res) => {
   try {
     const data = await appModel.find({verified:true});
@@ -219,3 +220,22 @@ module.exports.allLinuxApp = async (req, res) => {
     return res.json({ message: "Internal server error", status: false });
   }
 };
+
+module.exports.getUserFeedback=async(req,res)=>{
+  try {
+    const feedbackData=await feedbackModel.find().populate({
+      path: "userId",
+      model: "user",
+      select: "username email verified blockStatus",
+    });
+    if(feedbackData){
+      return res.json({message:"success",status:true,feedbackData})
+    }else{
+      return res.json({message:"failed",status:false})
+    }
+    
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}

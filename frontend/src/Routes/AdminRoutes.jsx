@@ -25,7 +25,7 @@ export default function AdminRoutes() {
         <Route path='/account' element={<AdminUserAccountPage/>}/>
         <Route path='/app_management' element={<AdminAppManagementPage/>}/>
         <Route path='/compliant' element={<AdminCompliantPage/>}/>
-        <Route path='/feedback' element={<AdminFeedbackCheckPage/>}/>
+        <Route path='/feedback/:feedId' element={<AdminFeedbackCheckPage/>}/>
         <Route path='/feedback_view' element={<AdminViewFeedbackPage/>}/>
         <Route path='/library' element={<AdminLibrarypage/>}/> 
         <Route path='/apps' element={<AdminAppPage/>}/> 

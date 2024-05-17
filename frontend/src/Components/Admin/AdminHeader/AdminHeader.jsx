@@ -35,18 +35,11 @@ export default function AdminHeader() {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <h2 id="t2">Nexus</h2>
-          <select name="" id="osfilter">
-            <option value="">Choose OS</option>
-            <option value="">Windows</option>
-            <option value="">Linux</option>
-            <option value="">Mac</option>
-          </select>
+         
           <br />
-          <hr id="hrfilter" />
-          <input type="text" id="search" placeholder="Search.." />
-          <button id="searchicon">
-            <i class="bi bi-search" id="search1"></i>
-          </button>
+         
+
+
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
