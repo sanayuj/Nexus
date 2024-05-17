@@ -16,6 +16,11 @@ export const blockApp=(appId)=>{
     return adminInstance.post(`/blockApp/${appId}`)
 }
 
+
+
+//GET METHODS
+
+
 export const userlist=()=>{
     return adminInstance.get("/userlist")
 }
@@ -34,4 +39,8 @@ export const viewCompliant=()=>{
 
 export const fetchAllGames=()=>{
     return adminInstance.get("/allGameApp")
+}
+
+export const fetchAllUtilityApps=()=>{
+    return adminInstance.get("/allUtilityApps")
 }

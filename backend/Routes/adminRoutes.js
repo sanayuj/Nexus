@@ -1,7 +1,7 @@
 const express=require("express")
 const {userList,blockUser, adminLogin, adminHeader, fetchAllApps, appAproval, appBlock, viewComplaints}=require("../Controllers/adminController")
 const adminAuth=require("../Middleware/adminAuth")
-const { FetchGames } = require("../Controllers/appController")
+const { FetchGames, UtilityApps } = require("../Controllers/appController")
 const router=express.Router()
 
 
@@ -16,5 +16,6 @@ router.get("/adminHeader",adminAuth ,adminHeader)
 router.get("/allApp",adminAuth,fetchAllApps)
 router.get("/viewComplaint",adminAuth,viewComplaints)
 router.get("/allGameApp",adminAuth,FetchGames)
+router.get("/allUtilityApps",adminAuth,UtilityApps)
 
 module.exports=router
