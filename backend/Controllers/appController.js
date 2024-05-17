@@ -140,16 +140,45 @@ module.exports.addToWishlist=async(req,res)=>{
 }
 
 
-module.exports.getWishlistApp=async(req,res)=>{
-  try {
-    const userId=req.params.userId
-    const data=await wishlistModel.find({userId})
-    if(data){
-      return res.json({message:"Success",status:true,data})
-    }
+// module.exports.getWishlistApp=async(req,res)=>{
+//   try {
+//     const userId=req.user._id
+//     const data=await wishlistModel.find({userId})
+//     console.log(data,"DDDF");
+//     if(data){
+//       return res.json({message:"Success",status:true,data})
+//     }
   
+//   } catch (error) {
+//     console.log(error);
+//     return res.json({message:"Internal server error",status:false})
+//   }
+// }
+
+module.exports.getWishlistApp = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const wishlistItems = await wishlistModel.find({ userId });
+
+    if (!wishlistItems.length) {
+      return res.json({ message: "No wishlist items found", status: true, data: [] });
+    }
+
+    // Use Promise.all to fetch all app details in parallel
+    const appDetailsPromises = wishlistItems.map(async (item) => {
+      const appDetails = await appModel.findById(item.appId);
+      return {
+        ...item.toObject(),
+        appDetails: appDetails ? appDetails.toObject() : null
+      };
+    });
+
+    const wishlistWithAppDetails = await Promise.all(appDetailsPromises);
+
+    return res.json({ message: "Success", status: true, data: wishlistWithAppDetails });
+
   } catch (error) {
     console.log(error);
-    return res.json({message:"Internal server error",status:false})
+    return res.json({ message: "Internal server error", status: false });
   }
-}
+};

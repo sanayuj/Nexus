@@ -66,6 +66,6 @@ export const getSelectedAppsDetails=(appId)=>{
     return userInstance.get(`/selectedAppDetails/${appId}`)
 }
 
-export const getWishlistApps=(userId)=>{
-    return userInstance.get(`/getWishlistApps/${userId}`)
+export const getWishlistApps=()=>{
+    return userInstance.get('/getWishlistApps')
 }

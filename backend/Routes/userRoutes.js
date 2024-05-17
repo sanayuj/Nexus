@@ -35,7 +35,7 @@ router.get("/getUtilityApp",UtilityApps)
 router.get("/getGamesApp",GameApps)
 router.get("/userInstalledApp",userAuth,fetchUserInstalledApps)
 router.get("/selectedAppDetails/:appId",userAuth,selectedApps)
-router.get("/getWishlistApps/:userId",userAuth,getWishlistApp)
+router.get("/getWishlistApps",userAuth,getWishlistApp)
 
 
 

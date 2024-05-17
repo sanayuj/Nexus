@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 
 export default function Library() {
   const [installedApp, setInstalledApp] = useState([]);
+  const [wishlist,setWishlist]=useState([])
+  const [view, setView] = useState('installed');
+  
   const userId = useSelector((state) => state?.user?.value?._id);
 
 
@@ -15,16 +18,21 @@ export default function Library() {
 
   const allApps=()=>{
     getUserInstalledApps().then((value) => {
+      console.log(value?.data);
       if (value?.data?.status) {
         setInstalledApp(value?.data?.apps);
+        setView('installed')
+        console.log(view,"View in Installed apps");
       }
     });
   }
-  const getWishlist=(userId)=>{
-    getWishlistApps(userId).then((value)=>{
-      console.log(value?.data);
+  const getWishlist=()=>{
+    getWishlistApps().then((value)=>{
+      console.log(value?.data,"66666^^^^^6666");
       if(value?.data?.status){
-        setInstalledApp(value?.data?.data)
+        setWishlist(value?.data?.data)
+        setView('wishlist');
+        console.log(view,"View in wish apps");
       }
     })
   }
@@ -44,7 +52,7 @@ export default function Library() {
                   type="button"
                   class="btn btn-outline-primary"
                   id="libb1"
-                  onClick={()=>getUserInstalledApps()}
+                  onClick={()=>allApps()}
                 >
                   ALL
                 </button>
@@ -59,29 +67,55 @@ export default function Library() {
               </div>
               <br />
               <br />
-              {installedApp.length > 0 ? (
-                installedApp.map((value, index) => (
-                  <div class="card" id="ldiv" key={index}>
-                    <img
-                      src={`http://localhost:4000/img/${value?.appIcon}`}
-                      class="card-img-top"
-                      id="limg"
-                      alt="App Logo"
-                    />
-                    <div class="card-body">
-                      <h5 class="card-title" id="lh1">
-                        {value?.appName}
-                      </h5>
-                      <p  class="btn btn-primary" id="la">
-                        Downloaded
-                        
-                      </p>
+
+
+              {view === 'wishlist' ? (
+                wishlist.length > 0 ? (
+                  wishlist.map((value, index) => (
+                    <div className="card" id="ldiv" key={index}>
+                      <img
+                        src={`http://localhost:4000/img/${value?.appDetails?.appIcon}`}
+                        className="card-img-top"
+                        id="limg"
+                        alt="App Logo"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title" id="lh1">
+                          {value?.appDetails?.appName}
+                        </h5>
+                        <p className="btn btn-primary" id="la">
+                          Downloaded
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                <p>EMPTY</p>
-              )}
+                  ))
+                ) : (
+                  <p>Empty Wishlist</p>
+                )
+              ) : view === 'installed' ? (
+                installedApp.length > 0 ? (
+                  installedApp.map((value, index) => (
+                    <div className="card" id="ldiv" key={index}>
+                      <img
+                        src={`http://localhost:4000/img/${value?.appIcon}`}
+                        className="card-img-top"
+                        id="limg"
+                        alt="App Logo"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title" id="lh1">
+                          {value?.appName}
+                        </h5>
+                        <p className="btn btn-primary" id="la">
+                          Downloaded
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>Empty Library</p>
+                )
+              ) : null}
             </div>
           </div>
         </section>
