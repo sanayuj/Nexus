@@ -2,6 +2,7 @@ const userModel = require("../Models/userModel");
 const jwt = require("jsonwebtoken");
 const adminModel = require("../Models/adminModel");
 const appModel=require("../Models/appModel")
+const appReport=require("../Models/reportAppModel")
 const feedbackModel=require("../Models/userFeedbackModel")
 const bcrypt = require("bcrypt");
 const maxAge = 3 * 24 * 60 * 60;
@@ -121,7 +122,7 @@ module.exports.appBlock=async(req,res)=>{
 
 module.exports.viewComplaints=async(req,res)=>{
   try {
-    const complaintDetails=await feedbackModel.find({category:"Complaint"}).populate({
+    const complaintDetails=await appReport.find().populate({
       path: "userId",
       model: "user",
       select: "username email verified blockStatus",

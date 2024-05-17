@@ -7,7 +7,6 @@ export default function CompliantCheck() {
 const [complaints,setComplaints]=useState([])
     useEffect(()=>{
        viewCompliant().then((value)=>{
-        console.log(value.data,"%%%%%");
         if(value?.data?.status){
             setComplaints(value?.data?.complaintDetails)
         }
@@ -28,13 +27,13 @@ const [complaints,setComplaints]=useState([])
                                 
                                 <input type="text" id='cct1' value={value?.userId?.username} readOnly/>
                                 <input type="text" id='cct2' value={value?.userId?.email} readOnly/>
-                                <input type="text" id='cct3' value={value?.feedbackStatus} readOnly/>
+                                <input type="text" id='cct3' value={value?.reportCategory} readOnly/>
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" id='ccb1' aria-expanded="false" aria-controls="collapseOne">
                                     View Compliant<i class="bi bi-chevron-down" id='cci1'></i>
                                 </button>
                                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <p>{value?.feedbackComment}</p>
+                                        <p>{value?.reportMessage}</p>
                                     </div>
                                 </div>
                             </div>

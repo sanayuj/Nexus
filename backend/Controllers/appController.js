@@ -4,7 +4,7 @@ const wishlistModel = require("../Models/wishListModel");
 
 module.exports.showAllApps = async (req, res) => {
   try {
-    const data = await appModel.find();
+    const data = await appModel.find({verified:true});
     if (data) {
       return res.json({ data, status: true });
     } else {
@@ -21,7 +21,7 @@ module.exports.showAllApps = async (req, res) => {
 
 module.exports.FetchGames = async (req, res) => {
   try {
-    const data = await appModel.find({ Category: "Game" });
+    const data = await appModel.find({ Category: "Game" ,verified:true});
     if (data) {
       return res.json({ data, status: true });
     } else {
@@ -38,7 +38,7 @@ module.exports.FetchGames = async (req, res) => {
 
 module.exports.UtilityApps = async (req, res) => {
   try {
-    const data = await appModel.find({ Category: "Utilities" });
+    const data = await appModel.find({ Category: "Utilities",verified:true });
     if (data) {
       return res.json({ data, status: true });
     } else {
@@ -52,7 +52,7 @@ module.exports.UtilityApps = async (req, res) => {
 
 module.exports.GameApps = async (req, res) => {
   try {
-    const data = await appModel.find({ Category: "Game" });
+    const data = await appModel.find({ Category: "Game",verified:true });
     if (data) {
       return res.json({ data, status: true });
     } else {
@@ -85,7 +85,8 @@ module.exports.appReport = async (req, res) => {
       userId: req.body.userId,
       appId: req.body.appId,
     });
-    if (reportExist) {
+    console.log(reportExist,"😆");
+    if (reportExist.length>0) {
       return res.json({
         message: "Application Already Reported ",
         status: true,

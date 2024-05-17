@@ -11,9 +11,9 @@ export default function AdminSidebar() {
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6" id='sidebar'>
                             <Link to={'/admin/home'} id='link'><button id="hm"><i class="bi bi-house"id='home'>Home</i><br /><br /></button></Link>
-                            <Link to={'../apps'} id='link'><button id="ap"><i class="bi bi-app"id='app'>Apps</i><br /><br /></button></Link>
-                            <Link to={'../games'} id='link'><button id="gm"><i class="bi bi-controller" id='game'>Games</i><br /><br /></button></Link>
-                            <Link to={'../library'} id='link'><button id="lb"><i class="bi bi-collection"id='library'>Library</i><br /><br /></button></Link>
+                            {/* <Link to={'../apps'} id='link'><button id="ap"><i class="bi bi-app"id='app'>Apps</i><br /><br /></button></Link>
+                            <Link to={'../games'} id='link'><button id="gm"><i class="bi bi-controller" id='game'>Games</i><br /><br /></button></Link> */}
+                            {/* <Link to={'../library'} id='link'><button id="lb"><i class="bi bi-collection"id='library'>Library</i><br /><br /></button></Link> */}
                             <div class="btn-group dropend">
                                 <button id='hp' type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots" id='more'><br />More</i><br /><br />
