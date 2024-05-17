@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import './LinuxApps.css'
+import { fetchAllLinuxApps } from '../../../Services/adminApi'
 
 export default function LinuxApps() {
+const [linuxApp,setLinuxApp]=useState([])
+  useEffect(()=>{
+    fetchAllLinuxApps().then((value)=>{
+      if(value?.data?.status){
+        setLinuxApp(value?.data?.data)
+      }
+    },[])
+  },[])
   return (
     <div>
       <div id='div2'>
@@ -16,12 +25,18 @@ export default function LinuxApps() {
                     </tr>
                 </thead>
                 <tbody>
+                {linuxApp.length>0?(
+                  linuxApp.map((value,index)=>(
                     <tr>
-                    <th scope="row">1</th>
-                    <td><img id='timg' src="" alt="App icon" /></td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{index+1}</th>
+                    <td><img id='timg' src={`http://localhost:4000/img/${value.appIcon}`} alt="App icon" /></td>
+                    <td>{value?.appName}</td>
+                    <td>{value?.Category}</td>
                     </tr>
+                  ))
+                  
+                ):(<p>Empty</p>)}
+                    
                 </tbody>
             </table>
         </div>
