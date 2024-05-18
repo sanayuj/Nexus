@@ -1,0 +1,92 @@
+#adform12{
+    margin-left: 200px;
+    margin-top: 50px;
+    background-color: #222831b2;
+    width: 1100px;
+    height: 500px;
+    box-shadow: 2px 3px 4px;
+}
+#adt12{
+    color: white;
+    position: relative;
+    left: 190px;
+    top:50px;
+}
+#adsubmit2{
+    background-color: #31363F;
+    color: #EEEEEE;
+    border: 2px;
+    border-radius: 15px;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    top: 90px;
+    left: 500px;
+    font-weight: bold; 
+    font-size: 16px; 
+}
+#adsubmit2:hover{
+    color: #31363F;
+    background-color: #EEEEEE;
+    box-shadow: 2px 3px 4px;
+}#msg{
+    width: 650px;
+    height: 150px;
+    font-size: 16px;
+    color: black;
+    position: relative;
+    left: 50px;
+    top: 100px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+#adminnot{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    position: relative;
+    top: 30px;
+    background-color: antiquewhite;
+    width: 250px;
+    height: 50px;
+    padding-top: 13px;
+    padding-left: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#userId{
+    position: relative;
+    top: 50px;
+    width: 300px;
+    height: 50px;
+    left: 50px;
+    border-radius: 3px;
+}
+#secondradio{
+    position: relative;
+    left: 20px;
+}
+#adsearch{
+    margin-left: 400px;
+    width: 400px;
+    height: 50px;
+    border-radius: 20px;
+    position: relative;
+    top: -20px;
+    font-size: 16px;
+    background-color: #fcfafa9a;
+    color: black;
+    padding: 10px;
+}
+#adsearchicon{
+    position: relative;
+    left: -45px;
+    top: -17px;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    color: black;
+}
+#addiv{
+    margin-top: -700px;
+}
