@@ -22,6 +22,11 @@ export default function FeedbackCheck() {
   };
 
   const handleSubmit = () => {
+    if (comment.trim() === "") {
+      toast.error("Comment cannot be empty");
+      return;
+    }
+
     sendComments(comment, feedback?._id, feedback?.userId?._id).then(
       (value) => {
         if (value?.data?.status) {

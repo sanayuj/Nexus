@@ -6,12 +6,17 @@ const adminComments = new mongoose.Schema({
         required:true
     },
     feedId:{
-        type:String,
-        required:true
+        type: mongoose.Schema.Types.ObjectId,
+    ref: "UserFeedback",
+    required: true,
     },
     message:{
         type:String,
         required:true
+    },
+    viewed:{
+        type:Boolean,
+        default:false
     }
 })
 

@@ -43,15 +43,16 @@ export default function AdminHeader() {
           <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <button
+                <button 
+                onClick={()=>navigate("/admin/notification")}
                   class="btn btn-dark dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+                  // data-bs-toggle="dropdown"
+                  // aria-expanded="false"
                   id="notification"
                 >
                   <i class="bi bi-bell" id="notify"></i>
                 </button>
-                <ul
+                {/* <ul
                   class="dropdown-menu dropdown-menu-dark"
                   id="notification_list"
                 >
@@ -70,7 +71,7 @@ export default function AdminHeader() {
                       Something else here
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </li>
             </ul>
           </div>

@@ -9,6 +9,7 @@ const multer = require("multer");
 // const appDetails = multer({ dest: 'public/images/AppDetails' });
 const userAuth=require("../Middleware/userAuth")
 const { showAllApps, UtilityApps, GameApps, selectedApps, appReport, addToWishlist, getWishlistApp } = require("../Controllers/appController")
+const { fetchFeedComment } = require("../Controllers/adminController")
 
 
 //POST METHODS
@@ -36,7 +37,7 @@ router.get("/getGamesApp",GameApps)
 router.get("/userInstalledApp",userAuth,fetchUserInstalledApps)
 router.get("/selectedAppDetails/:appId",userAuth,selectedApps)
 router.get("/getWishlistApps",userAuth,getWishlistApp)
-
+router.get("/getfeedComment/:userId",userAuth,fetchFeedComment)
 
 
 
