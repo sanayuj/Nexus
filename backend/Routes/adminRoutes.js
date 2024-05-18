@@ -21,5 +21,5 @@ router.get("/allwindowsApps",adminAuth,allWindowsApp)
 router.get("/allLinuxApps",adminAuth,allLinuxApp)
 router.get("/allMacsApps",adminAuth,allMacApp)
 router.get("/fetchUserFeedback",adminAuth,getUserFeedback)
-router.get("/fetchFeedback/:feedId",adminAuth,fetchFeeddetails)
+router.get("/fetchFeedback/:id",adminAuth,fetchFeeddetails)
 module.exports=router

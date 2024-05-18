@@ -138,7 +138,17 @@ module.exports.viewComplaints=async(req,res)=>{
 
 module.exports.fetchFeeddetails=async(req,res)=>{
   try {
-    
+    const feedId=req.params.id
+    const data=await feedbackModel.findById(feedId).populate({
+      path: "userId",
+      model: "user",
+      select: "username email verified blockStatus",
+    });
+    if(data){
+    return res.json({message:"Success",status:true,data})
+    }else{
+      return res.json({message:"Failed",status:false})
+    }
   } catch (error) {
     console.log(error);
     return res.json({message:"Internal server error",status:false})

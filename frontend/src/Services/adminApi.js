@@ -61,6 +61,7 @@ export const fetchUserFeedback=()=>{
     return adminInstance.get("/fetchUserFeedback")
 }
 
-export const fetchFeedDetails=(feedId)=>{
-    return adminInstance.get(`/fetchFeedback/${feedId}`)
+export const fetchFeedDetails=(id)=>{
+    console.log(id,"^^^^^");
+    return adminInstance.get(`/fetchFeedback/${id}`)
 }
