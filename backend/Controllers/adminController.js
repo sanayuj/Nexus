@@ -213,6 +213,10 @@ module.exports.fetchFeedComment=async(req,res)=>{
       select: "category feedbackComment feedbackStatus ",
     });
     if(data){
+      await adminCommentModel.updateMany(
+        { to: userId, viewed: false },
+        { $set: { viewed: true } }
+      );
       return res.json({message:"Success",status:true,data})
     }
     

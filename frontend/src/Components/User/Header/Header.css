@@ -20,6 +20,15 @@
 #notification_list{
     width: 500px;
 }
+.new-label {
+    background-color: red;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    margin-left: 5px;
+    border-radius: 3px;
+  }
+  
 #search{
     margin-left: 100px;
     width: 500px;

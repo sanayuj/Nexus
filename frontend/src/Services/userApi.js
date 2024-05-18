@@ -71,6 +71,5 @@ export const getWishlistApps=()=>{
 }
 
 export const getAdminFeedComment=(userId)=>{
-    console.log(userId,"8*******");
     return userInstance.get(`/getfeedComment/${userId}`)
 }
