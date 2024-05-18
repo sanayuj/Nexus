@@ -16,6 +16,9 @@ export const blockApp=(appId)=>{
     return adminInstance.post(`/blockApp/${appId}`)
 }
 
+export const sendComments=(value,feedId,userId)=>{
+    return adminInstance.post(`/sendComments/${feedId}`,{value,userId})
+}
 
 
 //GET METHODS

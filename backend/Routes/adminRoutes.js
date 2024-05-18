@@ -1,5 +1,5 @@
 const express=require("express")
-const {userList,blockUser, adminLogin, adminHeader, fetchAllApps, appAproval, appBlock, viewComplaints, fetchFeeddetails}=require("../Controllers/adminController")
+const {userList,blockUser, adminLogin, adminHeader, fetchAllApps, appAproval, appBlock, viewComplaints, fetchFeeddetails, sendComments}=require("../Controllers/adminController")
 const adminAuth=require("../Middleware/adminAuth")
 const { FetchGames, UtilityApps, allWindowsApp, allLinuxApp, allMacApp, getUserFeedback } = require("../Controllers/appController")
 const router=express.Router()
@@ -9,6 +9,7 @@ router.post("/adminLogin",adminLogin)
 router.post('/userblock/:id',blockUser)
 router.post("/approveApp/:id",appAproval)
 router.post("/blockApp/:id",appBlock)
+router.post("/sendComments/:feedId",adminAuth,sendComments)
 
 
 router.get("/userlist",userList)

@@ -1,9 +1,10 @@
 const userModel = require("../Models/userModel");
 const jwt = require("jsonwebtoken");
 const adminModel = require("../Models/adminModel");
-const appModel=require("../Models/appModel")
-const appReport=require("../Models/reportAppModel")
-const feedbackModel=require("../Models/userFeedbackModel")
+const appModel = require("../Models/appModel");
+const appReport = require("../Models/reportAppModel");
+const feedbackModel = require("../Models/userFeedbackModel");
+const adminCommentModel = require("../Models/adminFeedCommentModel");
 const bcrypt = require("bcrypt");
 const maxAge = 3 * 24 * 60 * 60;
 
@@ -84,73 +85,120 @@ module.exports.adminHeader = async (req, res) => {
   }
 };
 
-module.exports.fetchAllApps=async(req,res)=>{
+module.exports.fetchAllApps = async (req, res) => {
   try {
-
-    const Data=await appModel.find().populate({
+    const Data = await appModel.find().populate({
       path: "userId",
       model: "user",
       select: "username email verified blockStatus",
     });
-    console.log(Data,"All Application Details !!!!");
-    return res.json({Data,status:true})
+    console.log(Data, "All Application Details !!!!");
+    return res.json({ Data, status: true });
   } catch (error) {
     console.log(error);
-    return res.json({message:"Internal server error",status:false})
+    return res.json({ message: "Internal server error", status: false });
   }
-}
+};
 
-module.exports.appAproval=async(req,res)=>{
+module.exports.appAproval = async (req, res) => {
   try {
-    const appId=req.params.id
-    const appDetails = await appModel.findByIdAndUpdate(appId, { verified: true }, { new: true });
-    return res.json({message:"Application Approved",status:true,appDetails})
+    const appId = req.params.id;
+    const appDetails = await appModel.findByIdAndUpdate(
+      appId,
+      { verified: true },
+      { new: true }
+    );
+    return res.json({
+      message: "Application Approved",
+      status: true,
+      appDetails,
+    });
   } catch (error) {
-    return res.json({message:"Internal server error",status:false})
+    return res.json({ message: "Internal server error", status: false });
   }
-}
+};
 
-module.exports.appBlock=async(req,res)=>{
+module.exports.appBlock = async (req, res) => {
   try {
-    const appId=req.params.id
-    const appDetails = await appModel.findByIdAndUpdate(appId, { verified: false }, { new: true });
-    return res.json({message:"Application Blocked",status:true,appDetails})
+    const appId = req.params.id;
+    const appDetails = await appModel.findByIdAndUpdate(
+      appId,
+      { verified: false },
+      { new: true }
+    );
+    return res.json({
+      message: "Application Blocked",
+      status: true,
+      appDetails,
+    });
   } catch (error) {
-    return res.json({message:"internal server error",status:false})
+    return res.json({ message: "internal server error", status: false });
   }
-}
+};
 
-module.exports.viewComplaints=async(req,res)=>{
+module.exports.viewComplaints = async (req, res) => {
   try {
-    const complaintDetails=await appReport.find().populate({
+    const complaintDetails = await appReport.find().populate({
       path: "userId",
       model: "user",
       select: "username email verified blockStatus",
     });
-    return res.json({message:"Complaints",status:true,complaintDetails})
+    return res.json({ message: "Complaints", status: true, complaintDetails });
   } catch (error) {
     console.log(error);
-    return res.json({message:"Internal server error",status:false})
+    return res.json({ message: "Internal server error", status: false });
   }
-}
+};
 
-
-
-module.exports.fetchFeeddetails=async(req,res)=>{
+module.exports.fetchFeeddetails = async (req, res) => {
   try {
-    const feedId=req.params.id
-    const data=await feedbackModel.findById(feedId).populate({
+    const feedId = req.params.id;
+    const data = await feedbackModel.findById(feedId).populate({
       path: "userId",
       model: "user",
       select: "username email verified blockStatus",
     });
-    if(data){
-    return res.json({message:"Success",status:true,data})
-    }else{
-      return res.json({message:"Failed",status:false})
+    if (data) {
+      return res.json({ message: "Success", status: true, data });
+    } else {
+      return res.json({ message: "Failed", status: false });
     }
   } catch (error) {
     console.log(error);
-    return res.json({message:"Internal server error",status:false})
+    return res.json({ message: "Internal server error", status: false });
   }
-}
+};
+
+module.exports.sendComments = async (req, res) => {
+  try {
+    const feedId = req.params.feedId;
+    const CommentExist = await adminCommentModel.find({
+      to: req.body.userId,
+      feedId: feedId,
+    });
+    if (CommentExist) {
+      return res.json({
+        message: "Already sended ",
+        status: true,
+      });
+    }
+    const feedbackComment = new adminCommentModel({
+      to: req.body.userId,
+      feedId: feedId,
+      message: req.body.value,
+    });
+    const data = feedbackComment.save();
+    if (data) {
+      return res.json({
+        message: "Message sended successfully",
+        status: true,
+        data,
+      });
+    } else {
+      return res.json({ message: "Unable to send", status: false });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: "Internal server error", status: false });
+  }
+};
