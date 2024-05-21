@@ -47,7 +47,55 @@
     font-size: 18px;
 }
 
+#usearch{
+    margin-left: 100px;
+    width: 500px;
+    height: 40px;
+    border-radius: 20px;
+    position: relative;
+    top: -90px;
+    left: 260px;
+    font-size: 16px;
+    background-color: #fcfafa9a;
+    color: black;
+    padding: 10px;
+}
+#usearch1{
+    position: relative;
+    top: -78px;
+    left: 260px;
+}
+#usearchicon{
+    position: relative;
+    left: -45px;
+    top: -10px;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    color: black;
+}
+#uosfilter{
+    background-color: transparent;
+    color: #EEEEEE;
+    width: auto;
+    border:2px solid black;
+    border-radius: 3px;
+    position: relative;
+    left: 200px;
+    height: 30px;
+    font-size: 18px;
+    top: -55px;
+}
 
-.notAvailable{
-    text-align: center;
+#uosfilter option{
+    background-color: #31363F;
+    color: #EEEEEE;
+}
+#carouselExampleIndicators{
+    position: relative;
+    top: -30px;
+}
+#homenav{
+    position: relative;
+    left: 50px;
 }

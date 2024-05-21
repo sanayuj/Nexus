@@ -76,9 +76,10 @@ export default function Header() {
                   className="dropdown-menu dropdown-menu-dark"
                   id="notification_list"
                 >
+                <h5 className="notificationHead">Notifications</h5>
                   {feedComment.length > 0 ? (
                     feedComment.map((value, index) => (
-                      <li key={index}>
+                      <li className="dropLi" key={index}>
                         <p className="dropdown-item">
                           {!value?.viewed && (
                             <span className="new-label">New</span>

@@ -90,3 +90,14 @@
 #link{
     text-decoration: none;
 }
+
+.notificationHead{
+    margin-left: 15px;
+}
+
+
+.dropLi{
+    background-color: rgb(54, 166, 166);
+    border-radius: 10px;
+    margin: 10px;
+}

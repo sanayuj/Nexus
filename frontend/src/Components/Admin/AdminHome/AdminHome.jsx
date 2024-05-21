@@ -7,6 +7,7 @@ export default function AdminHome() {
     <div>
         <div class="div2" id='div2'>
             <section>
+            
                 <div id="carouselExampleIndicators" class="carousel slide">
                     <div class="carousel-indicators" id=''>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

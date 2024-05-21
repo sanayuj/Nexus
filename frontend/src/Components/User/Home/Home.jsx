@@ -34,6 +34,16 @@ export default function Home() {
         <section>
           <div class="container">
             <div class="row">
+            <div id='homenav'>
+                    <select name="" id="uosfilter">
+                        <option value="">Choose OS</option>
+                        <option value="">Windows</option>
+                        <option value="">Linux</option>
+                        <option value="">Mac</option>
+                    </select><br />
+                    <input type="text" id='usearch' placeholder='Search..'/>
+                    <button id='usearchicon'><i class="bi bi-search" id='usearch1'></i></button>
+                    </div>
               <div id="carouselExampleIndicators" class="carousel slide">
                 <div class="carousel-indicators" id="">
                   <button
