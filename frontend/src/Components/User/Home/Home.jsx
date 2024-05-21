@@ -7,8 +7,51 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const [appDetails, setAppDetails] = useState([]);
+  const [filteredAllApps, setFilteredAllApps] = useState([]);
+  const [selectedOS, setSelectedOS] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const userId = useSelector((state) => state?.user?.value?._id);
   const navigate=useNavigate()
+
+  useEffect(() => {
+    getUploadedApps().then((value) => {
+      console.log(value?.data?.data, "$$$");
+      setAppDetails(value?.data?.data);
+      setFilteredAllApps(value?.data?.data)
+    });
+  }, []);
+
+  useEffect(() => {
+    filterGames();
+  }, [selectedOS, searchQuery, appDetails]);
+
+  const handleOSChange = (e) => {
+    console.log(e.target.value,"$$$$$$******$$$$$");
+    setSelectedOS(e.target.value);
+    console.log(selectedOS,"!!!!!");
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+
+  const filterGames = () => {
+    let filtered = appDetails;
+
+    if (selectedOS) {
+      filtered = filtered.filter((apps) => apps.OS === selectedOS);
+    }
+
+    if (searchQuery) {
+      filtered = filtered.filter((app) =>
+        app.appName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    console.log("Filtered Apps:", filtered);
+    setFilteredAllApps(filtered);
+  };
 
   const DownloadSelectedApp = (apkFile, appId) => {
     appAddtoProfile(userId, appId).then((value) => {
@@ -22,12 +65,7 @@ export default function Home() {
     document.body.removeChild(link);
   };
 
-  useEffect(() => {
-    getUploadedApps().then((value) => {
-      console.log(value?.data?.data, "$$$");
-      setAppDetails(value?.data?.data);
-    });
-  }, []);
+
   return (
     <div>
       <div class="div2" id="div2">
@@ -35,13 +73,13 @@ export default function Home() {
           <div class="container">
             <div class="row">
             <div id='homenav'>
-                    <select name="" id="uosfilter">
+                    <select name="" id="uosfilter" onChange={handleOSChange}>
                         <option value="">Choose OS</option>
-                        <option value="">Windows</option>
-                        <option value="">Linux</option>
-                        <option value="">Mac</option>
+                        <option value="Windows">Windows</option>
+                        <option value="Linux">Linux</option>
+                        <option value="MAC">Mac</option>
                     </select><br />
-                    <input type="text" id='usearch' placeholder='Search..'/>
+                    <input type="text" id='usearch' onChange={handleSearchChange} placeholder='Search..'/>
                     <button id='usearchicon'><i class="bi bi-search" id='usearch1'></i></button>
                     </div>
               <div id="carouselExampleIndicators" class="carousel slide">
@@ -103,8 +141,8 @@ export default function Home() {
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
-              {appDetails.length > 0 ? (
-                appDetails.map((value, id) => (
+              {filteredAllApps.length > 0 ? (
+                filteredAllApps.map((value, id) => (
                   <div className="card" id="hdiv" onClick={()=>navigate(`/install/${value?._id}`)} key={id}>
                     <img
                       src={`http://localhost:4000/img/${value?.appIcon}`}
