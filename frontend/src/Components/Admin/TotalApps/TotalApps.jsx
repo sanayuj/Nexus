@@ -4,15 +4,58 @@ import { totalApplications } from "../../../Services/adminApi";
 
 export default function TotalApps() {
   const [appDetails, setAppDetails] = useState([]);
+  const [filteredApps, setFilteredApps] = useState([]);
+  const [selectedOS, setSelectedOS] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     totalApplications().then((value) => {
-      console.log(value.data.Data,"######");
       setAppDetails(value.data.Data);
     });
   }, []);
+
+  useEffect(() => {
+    filterGames();
+  }, [selectedOS, searchQuery, appDetails]);
+
+  const handleOSChange = (e) => {
+    setSelectedOS(e.target.value);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+
+  const filterGames = () => {
+    let filtered = appDetails;
+
+    if (selectedOS) {
+      filtered = filtered.filter((apps) => apps.OS === selectedOS);
+    }
+
+    if (searchQuery) {
+      filtered = filtered.filter((app) =>
+        app.appName.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    console.log("Filtered Apps:", filtered);
+    setFilteredApps(filtered);
+  };
+
   return (
     <div>
       <div id="div2">
+      <div id='anav'>
+            <select name="" id="hosfilter" onChange={handleOSChange}>
+                        <option value="">Choose OS</option>
+                        <option value="Windows">Windows</option>
+                        <option value="Linux">Linux</option>
+                        <option value="MAC">Mac</option>
+                    </select><br /><hr id='hhrfilter'/>
+                    <input type="text" id='hsearch' onChange={handleSearchChange} placeholder='Search..'/>
+                    <button id='hsearchicon'><i class="bi bi-search" id='hsearch1'></i></button>
+            </div>
         <h2 id="th2">Apps Details</h2>
         <table class="table table-striped table-hover" id="tapps">
           <thead>
@@ -25,7 +68,7 @@ export default function TotalApps() {
             </tr>
           </thead>
           <tbody>
-          {appDetails.map((value,index)=>(
+          {filteredApps.map((value,index)=>(
             <tr>
               <th scope="row">{index+1}</th>
               <td>
