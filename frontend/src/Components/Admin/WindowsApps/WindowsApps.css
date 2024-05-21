@@ -13,3 +13,29 @@
     left: 80px;
     top: -50px;
 }
+#hsearch{
+    margin-left: 100px;
+    width: 500px;
+    height: 40px;
+    border-radius: 20px;
+    position: relative;
+    top: -90px;
+    left: 290px;
+    font-size: 16px;
+    background-color: #fcfafa9a;
+    color: black;
+}
+#hsearchicon{
+    position: relative;
+    left: 250px;
+    top: -90px;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    color: black;
+}
+#anav1{
+    position: relative;
+    left: 80px;
+    top: 10px;
+}
