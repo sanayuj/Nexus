@@ -20,6 +20,10 @@ export const sendComments=(value,feedId,userId)=>{
     return adminInstance.post(`/sendComments/${feedId}`,{value,userId})
 }
 
+export const sendNotification=(data)=>{
+    return adminInstance.post("/sendNotification",{data})
+}
+
 
 //GET METHODS
 
