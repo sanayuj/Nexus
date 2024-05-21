@@ -14,11 +14,9 @@ export default function Games() {
 
   useEffect(() => {
     getGameApps().then((value) => {
-      console.log(value.data, "Games");
       if (value.data.status) {
         setGames(value.data.data);
         setFilteredGames(value.data.data); 
-        console.log(games,"&&&&&!!~!~!~!~")
       }
     });
   }, []);
@@ -28,14 +26,11 @@ export default function Games() {
   }, [selectedOS, searchQuery, games]);
 
   const handleOSChange = (e) => {
-    console.log("OS change event triggered!!!!!!");
     setSelectedOS(e.target.value);
-    console.log("Selected OS:", e.target.value);
   };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
-    console.log("Search Query:~!!!!!", e.target.value);
   };
 
   const filterGames = () => {
@@ -57,7 +52,6 @@ export default function Games() {
 
   const DownloadSelectedApp = (apkFile, appId) => {
     appAddtoProfile(userId, appId).then((value) => {
-      console.log(value, "Data Downloaded");
     });
     const fileUrl = `http://localhost:4000/img/${apkFile}`;
     const link = document.createElement("a");
@@ -81,7 +75,6 @@ export default function Games() {
                   <option value="Linux">Linux</option>
                   <option value="MAC">Mac</option>
                 </select>
-                {/* <p>Selected OS: {selectedOS}</p> */}
                 <br />
                 <input
                   type="text"
