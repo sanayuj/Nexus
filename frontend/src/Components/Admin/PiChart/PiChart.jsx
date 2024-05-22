@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import "./PiChart.css"
 import { Pie } from 'react-chartjs-2';
 import {
@@ -8,11 +8,19 @@ import {
     Legend,
     Title,
 }from "chart.js"  
+import { getPieChartDetails } from '../../../Services/adminApi';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 
 const PiChart = () => {
+
+    const [totalAppCount,setTotalAppCount]=useState("")
+    const [totalGameCount,setTotalGameCount]=useState("")
+    const [totalUtility,setTotalUtility]=useState("")
+    const [totalMac,setTotalMac]=useState("")
+    const [totalWindows,setTotalWindows]=useState("")
+    const [totalLinux,setTotalLinux]=useState("")
     const options = {
         responsive: true,
         plugins: {
@@ -29,8 +37,8 @@ const PiChart = () => {
     labels: ['Total Apps', 'Games Apps ', 'Utility Apps', 'MAC Apps', 'Windows Apps', 'Linux Apps'],
     datasets: [
       {
-        label: 'Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Counts',
+        data: [totalAppCount, totalGameCount, totalUtility, totalMac, totalWindows, totalLinux],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
@@ -51,6 +59,24 @@ const PiChart = () => {
       },
     ],
   };
+
+
+
+
+  useEffect(()=>{
+getPieChartDetails().then((value)=>{
+    console.log(value?.data,"ggggGGGGGG");
+    if(value?.data?.status){
+        setTotalAppCount(value?.data?.totalApps)
+        setTotalGameCount(value?.data?.gamesApps)
+        setTotalUtility(value?.data?.utilityApps)
+        setTotalMac(value?.data?.macApps)
+        setTotalWindows(value?.data?.windowsApps)
+        setTotalLinux(value?.data?.linuxApps)
+
+    }
+})
+  },[])
 
   return (
     <div>

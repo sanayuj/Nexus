@@ -50,31 +50,6 @@ module.exports.userList = async (req, res, next) => {
   }
 };
 
-module.exports.blockUser = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const userDetails = await userModel.findById(id);
-    console.log(userDetails, "Student Details!!");
-    userDetails.blockStatus = !userDetails.blockStatus;
-    await userDetails.save();
-    if (userDetails.blockStatus) {
-      return res.json({
-        message: "User blocked successfully",
-        status: userDetails.blockStatus,
-      });
-    } else {
-      return res.json({
-        message: "User unblocked successfully",
-        status: userDetails.blockStatus,
-      });
-    }
-  } catch (error) {
-    return res.json({
-      message: "Internal server error in disable user ",
-      status: false,
-    });
-  }
-};
 
 module.exports.adminHeader = async (req, res) => {
   try {
@@ -246,6 +221,24 @@ module.exports.sendNotification=async(req,res)=>{
       return res.json({message:"Failed to send Notification",status:false})
     }
     
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}
+
+
+module.exports.PieChartDetails=async(req,res)=>{
+  try {
+    const totalApps = await appModel.find().count()
+    const gamesApps =await appModel.find({ Category: "Game"}).count()
+    const utilityApps=await appModel.find({ Category: "Utilities"}).count()
+    const macApps=await appModel.find({OS:"MAC"}).count()
+    const windowsApps=await appModel.find({OS:"Windows"}).count()
+    const linuxApps=await appModel.find({OS:"Linux"}).count()
+
+    return res.json({status:true,totalApps,gamesApps,utilityApps,macApps,windowsApps,linuxApps})
+
   } catch (error) {
     console.log(error);
     return res.json({message:"Internal server error",status:false})

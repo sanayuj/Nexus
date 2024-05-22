@@ -69,6 +69,9 @@ export const fetchUserFeedback=()=>{
 }
 
 export const fetchFeedDetails=(id)=>{
-    console.log(id,"^^^^^");
     return adminInstance.get(`/fetchFeedback/${id}`)
+}
+
+export const getPieChartDetails=()=>{
+    return adminInstance.get("/getPieChartDetails")
 }
