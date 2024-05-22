@@ -1,5 +1,5 @@
 
-const {register, login, Header, appUpload, userFeedback, updateProfile, appAddtoUser, fetchUserInstalledApps}=require("../Controllers/userController")
+const {register, login, Header, appUpload, userFeedback, updateProfile, appAddtoUser, fetchUserInstalledApps, getNotification}=require("../Controllers/userController")
 const express=require("express")
 const createMulterInstance = require("../Middleware/multer")
 const router=express.Router()
@@ -38,7 +38,7 @@ router.get("/userInstalledApp",userAuth,fetchUserInstalledApps)
 router.get("/selectedAppDetails/:appId",userAuth,selectedApps)
 router.get("/getWishlistApps",userAuth,getWishlistApp)
 router.get("/getfeedComment/:userId",userAuth,fetchFeedComment)
-
+router.get("/getnotification/:userId",userAuth,getNotification)
 
 
 module.exports=router

@@ -73,3 +73,7 @@ export const getWishlistApps=()=>{
 export const getAdminFeedComment=(userId)=>{
     return userInstance.get(`/getfeedComment/${userId}`)
 }
+
+export const getNotification=(userId)=>{
+    return userInstance.get(`/getnotification/${userId}`)
+}

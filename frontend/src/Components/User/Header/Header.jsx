@@ -4,25 +4,37 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setUserDetails } from "../../../Features/setUser";
-import { getAdminFeedComment, userHeader } from "../../../Services/userApi";
+import { getAdminFeedComment, getNotification, userHeader } from "../../../Services/userApi";
 
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [data, setData] = useState({});
-  const [feedComment, setFeedComment] = useState({});
-  const [seen,setSeen]=useState(false)
+  const [feedComment, setFeedComment] = useState([]);
+  const [notification, setNotification] = useState([]);
 
-  const adminFeedNotification = (userId) => {
-    setData(true)
+  const adminFeedNotification = async (userId) => {
     if (userId) {
-      getAdminFeedComment(userId).then((value) => {
+      try {
+        const value = await getAdminFeedComment(userId);
         if (value?.data?.status) {
           setFeedComment(value?.data?.data);
-        
         }
-      });
+      } catch (error) {
+        console.error("Error fetching admin feed comments:", error);
+      }
+    }
+  };
+
+  const getAdminNotification = async (userIdentity) => {
+    try {
+      const value = await getNotification(userIdentity);
+      if (value?.data?.status) {
+        setNotification(value?.data?.data);
+      }
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
     }
   };
 
@@ -35,13 +47,21 @@ export default function Header() {
   const userIdentity = useSelector((state) => state?.user?.value?._id);
 
   useEffect(() => {
-    userHeader().then((response) => {
-      if (response.data.status) {
-        setData(response.data.user);
-        dispatch(setUserDetails(response?.data?.user));
+    const fetchData = async () => {
+      try {
+        const response = await userHeader();
+        if (response.data.status) {
+          setData(response.data.user);
+          dispatch(setUserDetails(response?.data?.user));
+        }
+        await adminFeedNotification(userIdentity);
+        await getAdminNotification(userIdentity);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
       }
-    });
-    adminFeedNotification(userIdentity);
+    };
+
+    fetchData();
   }, [dispatch, userIdentity]);
 
   const handleLoginClick = () => {
@@ -61,34 +81,43 @@ export default function Header() {
             <ul className="navbar-nav">
               <li className="nav-item dropdown">
                 <button
-                    onClick={()=>adminFeedNotification(userIdentity)}
+                  onClick={() => adminFeedNotification(userIdentity)}
                   className="btn btn-dark dropdown-toggle"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                   id="notification"
                 >
-                {/* {!seen && (
-                            <span className="new-label">New</span>
-                          )} */}
                   <i className="bi bi-bell" id="notify"></i>
                 </button>
                 <ul
                   className="dropdown-menu dropdown-menu-dark"
                   id="notification_list"
                 >
-                <h5 className="notificationHead">Notifications</h5>
-                  {feedComment.length > 0 ? (
-                    feedComment.map((value, index) => (
-                      <li className="dropLi" key={index}>
-                        <p className="dropdown-item">
-                          {!value?.viewed && (
-                            <span className="new-label">New</span>
-                          )}
-                          <p>Reply of "{value?.feedId?.feedbackComment}"</p>
-                          {value?.message}
-                        </p>
-                      </li>
-                    ))
+                  <h5 className="notificationHead">Notifications</h5>
+                  {feedComment.length > 0 || notification.length > 0 ? (
+                    <>
+                      {feedComment.map((value, index) => (
+                        <li className="dropLi" key={index}>
+                          <p className="dropdown-item">
+                            {!value?.viewed && (
+                              <span className="new-label">New</span>
+                            )}
+                            <p>Reply of "{value?.feedId?.feedbackComment}"</p>
+                            {value?.message}
+                          </p>
+                        </li>
+                      ))}
+                      {notification.map((value, index) => (
+                        <li className="dropLi" key={index}>
+                          <p className="dropdown-item">
+                            {/* {!value?.viewed && (
+                              <span className="new-label">New</span>
+                            )} */}
+                            {value?.Message}
+                          </p>
+                        </li>
+                      ))}
+                    </>
                   ) : (
                     <li>
                       <p>No Notification</p>
@@ -119,7 +148,7 @@ export default function Header() {
                 <p className="dropdown-item">{data?.email}</p>
               </li>
               <li>
-                <button className="dropdown-item" onClick={() => userLogOut()}>
+                <button className="dropdown-item" onClick={userLogOut}>
                   Sign out
                 </button>
               </li>
@@ -128,9 +157,7 @@ export default function Header() {
               </li>
               <Link to="../profile" id="link">
                 <li>
-                  <p className="dropdown-item" href="#">
-                    View Profile
-                  </p>
+                  <p className="dropdown-item">View Profile</p>
                 </li>
               </Link>
             </ul>
