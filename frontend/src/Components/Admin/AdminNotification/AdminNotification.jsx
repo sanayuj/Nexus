@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AdminNotification.css";
 import { sendNotification, userlist } from "../../../Services/adminApi";
+import { toast } from "react-toastify";
 
 export default function AdminNotification() {
   const [selectedOption, setSelectedOption] = useState("");
@@ -59,7 +60,15 @@ export default function AdminNotification() {
 
     const sentNotification=(notificationData)=>{
 sendNotification(notificationData).then((value)=>{
-    console.log(value?.data,"DDDAAATTTAAA!!!!!!!");
+  if(value.data.status){
+    toast.success(value.data.message)
+    setMessage("")
+    setSelectedUser("")
+    setUserlist([])
+    setSelectedOption("")
+  }else{
+    toast.error(value.data.message)
+  } 
 })
 
     }

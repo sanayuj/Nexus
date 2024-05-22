@@ -21,7 +21,7 @@ export const sendComments=(value,feedId,userId)=>{
 }
 
 export const sendNotification=(data)=>{
-    return adminInstance.post("/sendNotification",{data})
+    return adminInstance.post("/sendNotification",{...data})
 }
 
 

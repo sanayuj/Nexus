@@ -5,6 +5,7 @@ const appModel = require("../Models/appModel");
 const appReport = require("../Models/reportAppModel");
 const feedbackModel = require("../Models/userFeedbackModel");
 const adminCommentModel = require("../Models/adminFeedCommentModel");
+const adminNotification=require("../Models/adminNotification")
 const bcrypt = require("bcrypt");
 const maxAge = 3 * 24 * 60 * 60;
 
@@ -218,6 +219,31 @@ module.exports.fetchFeedComment=async(req,res)=>{
         { $set: { viewed: true } }
       );
       return res.json({message:"Success",status:true,data})
+    }
+    
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}
+
+module.exports.sendNotification=async(req,res)=>{
+  try {
+    console.log(req.body,"DDDDYY");
+    const {type,userId,message}=req.body
+
+    const newNotification= new adminNotification({
+      notificationType:type,
+      ReceiverId:userId,
+      Message:message
+    })
+
+    const data=await newNotification.save()
+
+    if(data){
+    return res.json({message:"Notification sended successfully",status:true,data})
+    }else{
+      return res.json({message:"Failed to send Notification",status:false})
     }
     
   } catch (error) {
