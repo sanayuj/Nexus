@@ -6,6 +6,7 @@ const appReport = require("../Models/reportAppModel");
 const feedbackModel = require("../Models/userFeedbackModel");
 const adminCommentModel = require("../Models/adminFeedCommentModel");
 const adminNotification=require("../Models/adminNotification")
+const wishlistModel = require("../Models/wishListModel");
 const bcrypt = require("bcrypt");
 const maxAge = 3 * 24 * 60 * 60;
 
@@ -239,6 +240,22 @@ module.exports.PieChartDetails=async(req,res)=>{
 
     return res.json({status:true,totalApps,gamesApps,utilityApps,macApps,windowsApps,linuxApps})
 
+  } catch (error) {
+    console.log(error);
+    return res.json({message:"Internal server error",status:false})
+  }
+}
+
+module.exports.BarChartDetails=async(req,res)=>{
+  try {
+    const userCount=await userModel.find().count()
+    const approvedApps=await appModel.find({verified:true}).count()
+    const rejectedApps=await appModel.find({verified:false}).count()
+    const totalReports=await appReport.find().count()
+    const userFeedback=await feedbackModel.find().count()
+    const wishlistApps=await wishlistModel.find().count()
+    return res.json({message:"Success",status:true,userCount,approvedApps,rejectedApps,totalReports,userFeedback,wishlistApps})
+    
   } catch (error) {
     console.log(error);
     return res.json({message:"Internal server error",status:false})

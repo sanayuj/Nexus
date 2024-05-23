@@ -12,6 +12,7 @@ const {
   sendComments,
   sendNotification,
   PieChartDetails,
+  BarChartDetails,
   
 } = require("../Controllers/adminController");
 const adminAuth = require("../Middleware/adminAuth");
@@ -42,5 +43,9 @@ router.get("/allLinuxApps", adminAuth, allLinuxApp);
 router.get("/allMacsApps", adminAuth, allMacApp);
 router.get("/fetchUserFeedback", adminAuth, getUserFeedback);
 router.get("/fetchFeedback/:id", adminAuth, fetchFeeddetails);
- router.get("/getPieChartDetails",adminAuth,PieChartDetails)
+router.get("/getPieChartDetails",adminAuth,PieChartDetails)
+router.get("/getbarChartDetails",adminAuth,BarChartDetails)
+
+
+
 module.exports = router;

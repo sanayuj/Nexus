@@ -75,3 +75,7 @@ export const fetchFeedDetails=(id)=>{
 export const getPieChartDetails=()=>{
     return adminInstance.get("/getPieChartDetails")
 }
+
+export const getBarChartDetails=()=>{
+    return adminInstance.get("/getbarChartDetails")
+}

@@ -73,7 +73,6 @@ getPieChartDetails().then((value)=>{
         setTotalMac(value?.data?.macApps)
         setTotalWindows(value?.data?.windowsApps)
         setTotalLinux(value?.data?.linuxApps)
-
     }
 })
   },[])
