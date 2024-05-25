@@ -11,10 +11,14 @@ export default function AppManagement() {
   const [appDetails, setAppDetails] = useState([]);
 
   useEffect(() => {
+    fetchApplications();
+  }, []);
+
+  const fetchApplications = () => {
     totalApplications().then((value) => {
       setAppDetails(value.data.Data);
     });
-  }, [appDetails]);
+  };
 
   const testApplication = (apkFile) => {
     const fileUrl = `http://localhost:4000/img/${apkFile}`;
@@ -30,6 +34,7 @@ export default function AppManagement() {
     approveApp(appId).then((value) => {
       if (value?.data?.status) {
         toast.success(value?.data?.message);
+        fetchApplications(); // Re-fetch applications to update the state
       } else {
         toast.error("Unable to approve");
       }
@@ -38,24 +43,24 @@ export default function AppManagement() {
 
   const applicationBlock = (appId) => {
     blockApp(appId).then((value) => {
-      console.log(value?.data?.appDetails);
       if (value?.data?.status) {
-        // setAppDetails(value?.data?.appDetails);
         toast.success(value?.data?.message);
+        fetchApplications(); // Re-fetch applications to update the state
       } else {
         toast.error("Unable to block application");
       }
     });
   };
+
   return (
     <div>
-      <div class="div2" id="div2">
+      <div className="div2" id="div2">
         <section>
-          <div class="container">
-            <div class="row">
+          <div className="container">
+            <div className="row">
               <h2>App Management</h2>
-              {appDetails.map((value, Index) => (
-                <div id="ambox" key={Index}>
+              {appDetails.map((value, index) => (
+                <div id="ambox" key={index}>
                   <input
                     type="text"
                     id="amt1"
@@ -80,7 +85,7 @@ export default function AppManagement() {
                       testApplication(value?.apkFile);
                     }}
                   >
-                    <i class="bi bi-file-earmark-break" id="ami1"></i>Test
+                    <i className="bi bi-file-earmark-break" id="ami1"></i>Test
                   </button>
                   {value.verified ? (
                     <span className="bi bi-clipboard-check approved" id="amb2">
@@ -93,7 +98,7 @@ export default function AppManagement() {
                         approveApplication(value?._id);
                       }}
                     >
-                      <i class="bi bi-clipboard-check" id="ami1"></i>Approve
+                      <i className="bi bi-clipboard-check" id="ami1"></i>Approve
                     </button>
                   )}
 
@@ -101,7 +106,7 @@ export default function AppManagement() {
                     id="amb3"
                     onClick={() => applicationBlock(value?._id)}
                   >
-                    <i class="bi bi-ban" id="ami1"></i>Block
+                    <i className="bi bi-ban" id="ami1"></i>Block
                   </button>
                 </div>
               ))}

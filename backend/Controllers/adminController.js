@@ -85,6 +85,7 @@ module.exports.appAproval = async (req, res) => {
       { verified: true },
       { new: true }
     );
+    
     return res.json({
       message: "Application Approved",
       status: true,
@@ -205,7 +206,6 @@ module.exports.fetchFeedComment=async(req,res)=>{
 
 module.exports.sendNotification=async(req,res)=>{
   try {
-    console.log(req.body,"DDDDYY");
     const {type,userId,message}=req.body
 
     const newNotification= new adminNotification({
